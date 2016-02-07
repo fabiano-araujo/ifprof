@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#069985</color>
+    <color name="colorPrimaryDark">#068573</color>
+    <color name="colorAccent">#fff</color>
+    <color name="colorSecond">#101010</color>
+    <color name="colorThird">#e2e2e2</color>
+    <color name="windowBackground">#F5F5F5</color>
+    <color name="colorPurple">#9c27b0</color>
+    <color name="datepicker_primary">#ff4CAF50</color>
+    <color name="datepicker_primary_dark">#ff388E3C</color>
+    <color name="orangeColor">#FF5722</color>
+    <color name="blueColor">#2196F3</color>
+    <color name="redColor">#F44336</color>
+    <color name="grayColor">#607D8B</color>
+    <color name="colorTransparent">#00ffc7aa</color>
+    <color name="tab1">#f56337</color>
+    <color name="tab2">#762dff</color>
+    <color name="tab3">#49c6f0</color>
+</resources>

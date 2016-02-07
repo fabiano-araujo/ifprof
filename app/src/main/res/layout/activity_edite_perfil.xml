@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:id="@+id/llEditePerfil"
+    android:orientation="vertical"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbEditePerfil"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="3dp"
+        app:theme="@style/TheToobar">
+
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+         >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ivEditePerfil"
+                    android:layout_width="150dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/perfil_toobar"
+                    app:civ_border_width="4dp"
+                    app:civ_border_color="@color/colorAccent"/>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/iptNomeProfessorEdite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/edtNomeProfessorEdite"
+                        android:layout_width="match_parent"
+                        android:paddingBottom="13dp"
+                        android:paddingTop="13dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Nome"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/iptMatriculaProfessorEdite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/edtMatriculaProfessorEdite"
+                        android:layout_width="match_parent"
+                        android:paddingBottom="13dp"
+                        android:paddingTop="13dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Matrícula"
+                        android:inputType="number" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/iptEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/edtEmail"
+                        android:layout_width="match_parent"
+                        android:paddingBottom="13dp"
+                        android:paddingTop="13dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress" />
+                </android.support.design.widget.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/llEditarSenha"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/iptSenhaAntiga"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <EditText
+                            android:id="@+id/edtSenhaAntiga"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="13dp"
+                            android:paddingTop="13dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Senha antiga"
+                            android:inputType="textPassword" />
+                    </android.support.design.widget.TextInputLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/iptNovaSenha"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            >
+                            <EditText
+                                android:id="@+id/edtNovaSenha"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="13dp"
+                                android:paddingTop="13dp"
+                                android:hint="Confirme sua senha"
+                                android:inputType="textPassword" />
+                        </android.support.design.widget.TextInputLayout>
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/strEditarSenha"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textOff="off"
+                            android:textOn="on"
+                            android:checked="true"
+                            app:showText="false"
+                            android:layout_weight="4"
+                            android:layout_marginTop="26dp"
+                            android:layout_marginRight="4dp"
+                            android:visibility="gone">
+
+                        </android.support.v7.widget.SwitchCompat>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alterar senha"
+                    android:id="@+id/btnEditarSenha"
+                    android:textColor="@color/colorSecond"
+                    android:background="@drawable/button_transparent"
+                    android:layout_gravity="center_vertical"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Concluir"
+                        android:id="@+id/btnConcluirEdite"
+                        android:textColor="@color/colorAccent"
+                        android:background="@drawable/button_primary"
+                        android:layout_gravity="center_vertical"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

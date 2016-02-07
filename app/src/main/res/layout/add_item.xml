@@ -1,0 +1,33 @@
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    android:id="@+id/llOutra"
+    android:layout_marginLeft="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTitle"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Turma"
+        />
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spnAddOutra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+
+    </android.support.v7.widget.AppCompatSpinner>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:id="@+id/ivClose"
+        android:src="@drawable/ic_close_red_24dp"/>
+</LinearLayout>

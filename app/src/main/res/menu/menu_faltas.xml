@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.fabiano.ifprof.ActivityAddFaltas">
+    <item android:id="@+id/itmSend" android:title="Guardar"
+        android:orderInCategory="100" app:showAsAction="always"
+        android:icon="@drawable/ic_check_white_24dp"/>
+</menu>

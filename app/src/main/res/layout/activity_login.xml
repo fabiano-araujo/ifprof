@@ -1,0 +1,161 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:id="@+id/llLogin"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbLogin"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:title="Login"
+        android:elevation="3dp"
+        app:theme="@style/TheToobar">
+
+    </android.support.v7.widget.Toolbar>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:id="@+id/scrollView" >
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                >
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="1">
+                <!--<org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:dsb_min="2"
+                        app:dsb_max="15"
+                        />-->
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="Bem-vindo!"
+                            android:textColor="@color/colorPrimary"
+                            android:id="@+id/textView"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true" />
+                    </RelativeLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/iptMatricula"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/edtMatricula"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="13dp"
+                            android:paddingTop="13dp"
+                            android:hint="Matrícula"
+                            android:inputType="number" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/iptSenha"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            >
+                            <EditText
+                                android:id="@+id/edtSenha"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="13dp"
+                                android:paddingTop="13dp"
+                                android:hint="senha"
+                                android:inputType="textPassword" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/switcher"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textOff="off"
+                            android:textOn="on"
+                            android:checked="true"
+                            app:showText="false"
+                            android:layout_weight="4"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginRight="4dp"
+                            android:visibility="gone">
+
+                        </android.support.v7.widget.SwitchCompat>
+                    </LinearLayout>
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/cbSaveLogin"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:text="Salvar matrícula e senha"
+                        >
+
+                    </android.support.v7.widget.AppCompatCheckBox>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="30dp"
+                            >
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Entrar"
+                                android:id="@+id/btnEntrar"
+                                android:textColor="@color/colorAccent"
+                                android:background="@drawable/pressed_primary"
+                                />
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Não tem uma conta? click aqui!"
+                                android:id="@+id/btnCadastrar"
+                                android:shadowColor="@color/colorAccent"
+                                android:layout_marginTop="25dp"
+                                android:textColor="@color/colorPrimary"
+                                android:background="@drawable/pressed_transparent"
+                                />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+</LinearLayout>

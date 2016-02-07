@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    tools:context="com.example.fabiano.ifprof.ActivityAddQuestao"
+    android:id="@+id/llAddQuestao"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <include layout="@layout/toolbar"
+        android:id="@+id/tbProvas"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:id="@+id/scrollView2" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/iptPergunta"
+                    android:layout_width="match_parent"
+                    android:background="@color/windowBackground"         android:layout_marginTop="16dp"
+                    android:layout_height="wrap_content"
+                    >
+                    <EditText
+                        android:id="@+id/edtPergunta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:hint="Pergunta"/>
+                </android.support.design.widget.TextInputLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/flAddImage"
+                    android:layout_height="250dp"
+                    android:visibility="gone"
+                    >
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_transparent"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/btnExcluir"
+                        android:text="Excluir"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/oquefazer"
+                        android:id="@+id/ivAddImage"/>
+                </FrameLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Adicionar imagem"
+                    android:id="@+id/btnAddImage"
+                    android:background="@drawable/button_transparent"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorSecond"
+                    android:textSize="24sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:text="Alternativas"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=" a)"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/iptA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-18dp"
+                        android:layout_marginLeft="6dp"
+                        android:paddingTop="0dp"
+                        >
+                        <EditText
+                            android:id="@+id/edtA"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:hint="Alternativa A"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=" b)"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/iptB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-18dp"
+                        android:layout_marginLeft="6dp"
+                        android:paddingTop="0dp"
+                        >
+                        <EditText
+                            android:id="@+id/edtB"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:hint="Alternativa B"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=" c)"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/iptC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-18dp"
+                        android:layout_marginLeft="6dp"
+                        android:paddingTop="0dp"
+                        >
+                        <EditText
+                            android:id="@+id/edtC"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:hint="Alternativa C"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=" d)"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/iptD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-18dp"
+                        android:layout_marginLeft="6dp"
+                        android:paddingTop="0dp"
+                        >
+                        <EditText
+                            android:id="@+id/edtD"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:hint="Alternativa D"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=" e)"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/iptE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-18dp"
+                        android:layout_marginLeft="6dp"
+                        android:paddingTop="0dp"
+                        >
+                        <EditText
+                            android:id="@+id/edtE"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:hint="Alternativa E"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Disciplina"
+                        />
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/spnDisciplina"
+                        android:layout_marginLeft="7dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        >
+
+                    </android.support.v7.widget.AppCompatSpinner>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="16dp"
+                    android:textColor="@color/colorSecond"
+                    android:text="Alternativa correta"/>
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rgAlternativas"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:id="@+id/rbA"
+                        android:text=" a)"/>
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbB"
+                        android:layout_weight="1"
+                        android:text=" b)"/>
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbC"
+                        android:layout_weight="1"
+                        android:text=" c)"/>
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbD"
+                        android:layout_weight="1"
+                        android:text=" d)"/>
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbE"
+                        android:layout_weight="1"
+                        android:text=" e)"/>
+                </RadioGroup>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="Adicionar"
+                        android:layout_marginTop="30dp"
+                        android:id="@+id/btnAddQuestao"
+                        android:background="@drawable/pressed_primary"
+                        android:textColor="#fff"
+                        android:layout_gravity="bottom"
+                         />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

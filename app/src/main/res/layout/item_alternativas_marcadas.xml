@@ -1,0 +1,67 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_marginTop="13dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="pergunta"
+        android:textSize="20sp"
+        android:textColor="@color/colorSecond"
+        android:singleLine="true"
+        android:id="@+id/txtPergunta"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:id="@+id/rgAlternativas"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" a) a"
+            android:layout_marginTop="6dp"
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:id="@+id/rbA"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" b) b"
+            android:layout_marginTop="6dp"
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:id="@+id/rbB"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" c) c"
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:layout_marginTop="6dp"
+            android:id="@+id/rbC"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" d) d"
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:layout_marginTop="6dp"
+            android:id="@+id/rbD"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" e) e"
+            android:layout_marginTop="6dp"
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:id="@+id/rbE"
+            />
+    </RadioGroup>
+</LinearLayout>

@@ -1,0 +1,68 @@
+ <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/llAddTurma"
+        tools:context="com.example.fabiano.materialdesign.MainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tbAddTurma"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:theme="@style/TheToobar"
+            android:elevation="3dp"
+            >
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/iptNomeTurma"
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                >
+                <EditText
+                    android:id="@+id/edtNomeTurma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="13dp"
+                    android:inputType="text"
+                    android:paddingTop="13dp"
+                    android:hint="Nome da turma"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Adicionar"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/btnAddTurma"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:background="@drawable/button_primary"
+
+                    android:textColor="#fff"
+
+
+                    android:layout_marginBottom="40dp" />
+            </FrameLayout>
+        </LinearLayout>
+
+ </LinearLayout>

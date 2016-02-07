@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorAccent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView3"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/llTabProfessor"
+            >
+            <LinearLayout
+                android:id="@+id/l1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:minWidth="400dp"
+
+                    android:layout_marginLeft="10dp" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imMeuPerfil"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_person100"
+                        android:maxHeight="@dimen/size_icon"
+                        android:maxWidth="@dimen/size_icon"
+                        android:adjustViewBounds="true"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Meu perfil"
+                        android:id="@+id/textView2"
+                        android:textColor="@color/colorSecond"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="0" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:minWidth="400dp"
+                    android:layout_marginRight="10dp" >
+
+                    <ImageView
+                        android:src="@drawable/ic_questao1000"
+                        android:id="@+id/ivProvas"
+                        android:layout_width="match_parent"
+                        android:maxHeight="@dimen/size_icon"
+                        android:maxWidth="@dimen/size_icon"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:adjustViewBounds="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorSecond"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Questões"
+                        android:singleLine="true"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="7dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:minWidth="400dp"
+                    android:layout_marginLeft="10dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/ivAvaliacoes"
+                        android:maxHeight="@dimen/size_icon"
+                        android:maxWidth="@dimen/size_icon"
+                        android:src="@drawable/ic_avaliacao100"
+                        android:layout_gravity="center_horizontal"
+                        android:adjustViewBounds="true" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="avaliações"
+                        android:id="@+id/textView4"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorSecond"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:minWidth="400dp"
+                    android:layout_marginRight="10dp" >
+
+                    <ImageView
+                        android:src="@drawable/ic_disciplina100"
+                        android:id="@+id/ivDisciplinas"
+                        android:layout_width="match_parent"
+                        android:maxHeight="@dimen/size_icon"
+                        android:maxWidth="@dimen/size_icon"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:adjustViewBounds="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Disciplinas"
+                        android:id="@+id/textView12"
+                        android:textColor="@color/colorSecond"
+                        android:layout_gravity="center_horizontal"
+                     />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_search"
+        android:title="more"
+        android:icon="@drawable/ic_more_vert_gray_24dp"
+        app:showAsAction="always"
+        >
+        <menu>
+            <item android:id="@+id/itmDelete"
+                android:title="excluir"
+                app:showAsAction="always"
+                />
+            <item android:id="@+id/itmDetalhes"
+                android:title="Detalhes"
+                app:showAsAction="always"
+                />
+            <item android:id="@+id/itmEditar"
+                android:title="Editar"
+                app:showAsAction="always"
+                />
+        </menu>
+    </item>
+</menu>

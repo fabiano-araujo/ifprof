@@ -1,0 +1,112 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fabiano.materialdesign.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbSetPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:theme="@style/TheToobar"
+        android:elevation="3dp"
+        >
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:id="@+id/scrollView" >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:background="#EEEEEE"
+            android:id="@+id/llSetPhoto"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:minWidth="100dp"
+                    app:cardElevation="3dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:cardMaxElevation="3dp"
+                    app:cardCornerRadius="3dp"
+                    android:layout_gravity="center_horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/ivSetPhoto"
+                        android:padding="2dp"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/perfil_toobar"
+                        android:adjustViewBounds="true">
+                    </ImageView>
+                </android.support.v7.widget.CardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:text="Nova foto"
+                        android:layout_marginBottom="20dp"
+                        android:id="@+id/btnNewFoto"
+                        android:background="@drawable/pressed_transparent"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorSecond" />
+                    <Button
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:text="Existente"
+                        android:layout_marginBottom="20dp"
+                        android:id="@+id/btnExistente"
+                        android:background="@drawable/pressed_transparent"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorSecond" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:orientation="vertical"
+                android:layout_weight="3">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="deixar padão"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/btnSetPhoto"
+                    android:background="@drawable/pressed_primary"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorAccent" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

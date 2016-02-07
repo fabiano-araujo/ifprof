@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:background="@drawable/header_drawer"
+        android:orientation="vertical">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivHeader"
+            android:layout_width="65dp"
+            android:layout_marginTop="17dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/perfil_toobar"
+            app:civ_border_width="0dp"
+            app:civ_border_color="@color/colorThird"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="18dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:text="nome"
+            android:textSize="21sp"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/txtNome"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:text="Matrícula"
+            android:textSize="15sp"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/txtMatricula"
+           />
+
+    </LinearLayout>
+</LinearLayout>
