@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:configChanges="orientation|keyboardHidden"
     android:layout_height="match_parent"
-    tools:context="com.example.fabiano.ifprof.Perfil">
+    tools:context="com.developer.fabiano.ifprof.Perfil">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"

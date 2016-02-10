@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    tools:context="com.example.fabiano.ifprof.ActivityAddQuestao"
+    tools:context="com.developer.fabiano.ifprof.ActivityAddQuestao"
     android:id="@+id/llAddQuestao"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

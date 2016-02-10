@@ -7,7 +7,7 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:id="@+id/cdlAddNotas"
-    tools:context="com.example.fabiano.materialdesign.MainActivity">
+    tools:context="com.developer.fabiano.materialdesign.MainActivity">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="10dp"
         app:layout_anchor="@id/rvAddNotas"
-        app:layout_behavior="com.example.fabiano.ifprof.adapters.ScrollAwareFABBehavior"
+        app:layout_behavior="com.developer.fabiano.ifprof.adapters.ScrollAwareFABBehavior"
         app:layout_anchorGravity="bottom|right|end"
         android:src="@drawable/ic_check_white_24dp"
         />

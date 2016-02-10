@@ -84,7 +84,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Todos"
-                        android:checked="true"
                         android:layout_weight="1"
                         android:layout_marginLeft="16dp"
                         android:layout_gravity="left"
@@ -100,6 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
+                        android:checked="true"
                         android:id="@+id/rbOutro" />
                 </RadioGroup>
                 <Spinner

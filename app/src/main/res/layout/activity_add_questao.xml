@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    tools:context="com.example.fabiano.ifprof.ActivityAddQuestao"
+    tools:context="com.developer.fabiano.ifprof.ActivityAddQuestao"
     android:id="@+id/llAddQuestao"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,7 +31,8 @@
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/iptPergunta"
                     android:layout_width="match_parent"
-                    android:background="@color/windowBackground"         android:layout_marginTop="16dp"
+                    android:background="@color/windowBackground"
+                    android:layout_marginTop="16dp"
                     android:layout_height="wrap_content"
                     >
                     <EditText
@@ -41,26 +42,29 @@
                         android:inputType="text"
                         android:hint="Pergunta"/>
                 </android.support.design.widget.TextInputLayout>
-                <FrameLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:id="@+id/flAddImage"
-                    android:layout_height="250dp"
+                    android:id="@+id/llAddImage"
                     android:visibility="gone"
+                    android:layout_height="300dp"
+                    android:orientation="vertical"
                     >
+                    <ImageView
+                        android:layout_width="400dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/oquefazer"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/ivAddImage"/>
                     <Button
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/button_transparent"
-                        android:layout_gravity="right"
+                        android:layout_gravity="bottom"
                         android:layout_marginRight="5dp"
                         android:id="@+id/btnExcluir"
                         android:text="Excluir"/>
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/oquefazer"
-                        android:id="@+id/ivAddImage"/>
-                </FrameLayout>
+                </LinearLayout>
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

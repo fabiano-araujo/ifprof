@@ -5,7 +5,7 @@
     android:background="@color/tab3">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fillViewport="true"
         >
         <LinearLayout
@@ -14,35 +14,45 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="@dimen/image_apresentation3"
                 >
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
+
                     android:src="@drawable/send_to_email"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="24sp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Praticidade"/>
-                <TextView
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="20sp"
-                    android:text="        crie e envie suas provas e lista de chamada para seu email."/>
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="30sp"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:text="Praticidade"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:gravity="center_horizontal"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="Crie e envie suas provas e lista de chamada para seu email."/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

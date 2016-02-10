@@ -6,7 +6,13 @@
     <dimen name="margin_left_right">10dp</dimen>
     <dimen name="margin_top">10dp</dimen>
     <dimen name="margin_bottom">4dp</dimen>
-    <dimen name="height_CollapsingToolbarLayout">350dp</dimen>
+    <dimen name="height_CollapsingToolbarLayout">370dp</dimen>
     <dimen name="size_icon">150dp</dimen>
     <dimen name="margin_icon">10dp</dimen>
+    <dimen name="image_apresentation1">300dp</dimen>
+    <dimen name="image_apresentation3">300dp</dimen>
+    <dimen name="image_apresentation2">300dp</dimen>
+    <dimen name="icon_sem_dados">200dp</dimen>
+    <dimen name="margin_fab">16dp</dimen>
+    <dimen name="size_set_photo">350dp</dimen>
 </resources>

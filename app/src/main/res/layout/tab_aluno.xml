@@ -29,7 +29,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_marginTop="20dp"
-                    android:layout_height="170dp"
+                    android:layout_height="@dimen/icon_sem_dados"
                     android:src="@drawable/ic_sad_icon"
 
                     />
@@ -40,20 +40,20 @@
                     android:id="@+id/txtShowMensage"
                     android:gravity="center_horizontal"
                     android:text="Você não tem nenhuma aluno nessa turma !"
+                    android:layout_marginBottom="16dp"
                     android:textSize="20sp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="16dp"
                     android:layout_weight="1"
                     >
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_marginTop="20dp"
                         android:text="criar"
                         android:id="@+id/btnCriar"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginBottom="20dp"
+                        android:layout_gravity="bottom"
                         android:textColor="@color/colorAccent"
                         android:background="@drawable/button_primary"
                         />
@@ -76,7 +76,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="10dp"
         app:layout_anchor="@id/rvShow"
-        app:layout_behavior="com.example.fabiano.ifprof.adapters.ScrollAwareFABBehavior"
+        app:layout_behavior="com.developer.fabiano.ifprof.adapters.ScrollAwareFABBehavior"
         app:layout_anchorGravity="bottom|right|end"
         android:src="@drawable/ic_add_white_24dp"
         />

@@ -8,19 +8,20 @@
         android:layout_gravity="center_vertical"
         android:orientation="vertical">
         <ImageView
-            android:layout_height="130dp"
+            android:layout_height="@dimen/icon_sem_dados"
             android:layout_width="match_parent"
             android:id="@+id/ivImage"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_sad_icon"
             />
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:id="@+id/txtMensage"
             android:layout_gravity="center_horizontal"
             android:text="mensage"
+            android:gravity="center_horizontal"
             android:textSize="19sp"
             />
     </LinearLayout>

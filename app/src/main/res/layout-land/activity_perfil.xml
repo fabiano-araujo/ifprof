@@ -5,7 +5,8 @@ android:id="@+id/dlPerfil"
 android:layout_width="match_parent"
 android:configChanges="orientation|keyboardHidden"
 android:layout_height="match_parent"
-tools:context="com.example.fabiano.materialdesign.Perfil">
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+tools:context="com.developer.fabiano.materialdesign.Perfil">
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -51,10 +52,10 @@ tools:context="com.example.fabiano.materialdesign.Perfil">
         android:layout_height="match_parent"
         android:layout_weight="1"
         >
-        <android.support.v4.widget.NestedScrollView
+        <com.melnykov.fab.ObservableScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/nested2"
+            android:id="@+id/observableScrollView"
             android:background="#08000000"
             android:fillViewport="true"
             >
@@ -235,17 +236,16 @@ tools:context="com.example.fabiano.materialdesign.Perfil">
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
             </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
-        <android.support.design.widget.FloatingActionButton
+        </com.melnykov.fab.ObservableScrollView>
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/FABPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="10dp"
-            app:layout_anchor="@id/nested2"
-            app:layout_behavior="com.example.fabiano.ifprof.adapters.ScrollAwareFABBehavior"
-            app:layout_anchorGravity="bottom|right|end"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
             android:src="@drawable/ic_mode_edit_white_24dp"
-            android:id="@+id/FABPerfil"
+            fab:fab_colorNormal="@color/colorPrimary"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
             />
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>

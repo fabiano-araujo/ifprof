@@ -8,6 +8,12 @@
     <dimen name="margin_bottom">0dp</dimen>
     <dimen name="height_CollapsingToolbarLayout">280dp</dimen>
     <dimen name="size_icon">170dp</dimen>
-
     <dimen name="margin_icon">10dp</dimen>
+    <dimen name="image_apresentation1">250dp</dimen>
+    <dimen name="image_apresentation2">250dp</dimen>
+    <dimen name="image_apresentation3">250dp</dimen>
+    <dimen name="icon_sem_dados">170dp</dimen>
+    <dimen name="margin_fab">10dp</dimen>
+    <dimen name="size_set_photo">300dp</dimen>
+
 </resources>

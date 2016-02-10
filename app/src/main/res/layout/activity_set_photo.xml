@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.fabiano.materialdesign.MainActivity">
+    tools:context="com.developer.fabiano.materialdesign.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tbSetPhoto"
@@ -34,12 +34,13 @@
                 android:layout_marginTop="13dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="13dp"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/size_set_photo"
+                android:layout_gravity="center_horizontal"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight=".5">
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:minHeight="100dp"
                     android:minWidth="100dp"
                     app:cardElevation="3dp"
@@ -59,50 +60,49 @@
                         android:adjustViewBounds="true">
                     </ImageView>
                 </android.support.v7.widget.CardView>
-                <LinearLayout
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+                <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
+                    android:text="Nova foto"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/btnNewFoto"
+                    android:background="@drawable/pressed_transparent"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="24dp"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="45dp"
-                        android:text="Nova foto"
-                        android:layout_marginBottom="20dp"
-                        android:id="@+id/btnNewFoto"
-                        android:background="@drawable/pressed_transparent"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/colorSecond" />
-                    <Button
-                        android:layout_marginLeft="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="45dp"
-                        android:text="Existente"
-                        android:layout_marginBottom="20dp"
-                        android:id="@+id/btnExistente"
-                        android:background="@drawable/pressed_transparent"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/colorSecond" />
-                </LinearLayout>
+                    android:textColor="@color/colorSecond" />
+                <Button
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:text="Existente"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/btnExistente"
+                    android:background="@drawable/pressed_transparent"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorSecond" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="13dp"
-                android:orientation="vertical"
-                android:layout_weight="3">
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:layout_weight=".7">
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:text="deixar padão"
-                    android:layout_marginBottom="20dp"
                     android:id="@+id/btnSetPhoto"
                     android:background="@drawable/pressed_primary"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_vertical"
                     android:textColor="@color/colorAccent" />
             </LinearLayout>
         </LinearLayout>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:configChanges="orientation|keyboardHidden"
     android:layout_height="match_parent"
-    tools:context="com.example.fabiano.ifprof.ShowTurmas">
+    tools:context="com.developer.fabiano.ifprof.ShowTurmas">
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,7 +44,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_marginTop="20dp"
-                        android:layout_height="170dp"
+                        android:layout_height="@dimen/icon_sem_dados"
                         android:src="@drawable/ic_sad_icon"
 
                         />
@@ -91,9 +91,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
             app:borderWidth="0dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/margin_fab"
             app:layout_anchor="@id/rvShow"
-            app:layout_behavior="com.example.fabiano.ifprof.adapters.ScrollAwareFABBehavior"
+            app:layout_behavior="com.developer.fabiano.ifprof.adapters.ScrollAwareFABBehavior"
             app:layout_anchorGravity="bottom|right|end"
             android:src="@drawable/ic_add_white_24dp"
             />
