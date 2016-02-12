@@ -150,7 +150,7 @@ public class ShowAlunos extends AppCompatActivity implements NavigationView.OnNa
                 }
             }
             if(!professorLogged.getUriFoto().equals("null")) {
-                Bitmap bitmap1 = ImageUtil.setPic(Uri.parse(professorLogged.getUriFoto()), ivNavigation.getWidth(), ivNavigation.getHeight());
+                Bitmap bitmap1 = ImageUtil.setPic(professorLogged.getUriFoto(), ivNavigation.getWidth(), ivNavigation.getHeight());
                 if(bitmap1 != null){
                     ivNavigation.setImageBitmap(bitmap1);
                 }

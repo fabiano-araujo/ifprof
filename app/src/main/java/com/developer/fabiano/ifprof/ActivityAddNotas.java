@@ -23,10 +23,12 @@ import android.widget.TextView;
 
 import com.developer.fabiano.ifprof.adapters.AdapterAddNotas;
 import com.developer.fabiano.ifprof.adapters.AlertsAndControl;
+import com.developer.fabiano.ifprof.adapters.Progress;
 import com.developer.fabiano.ifprof.adapters.Repositorio;
 import com.developer.fabiano.ifprof.model.AllInfo;
 import com.developer.fabiano.ifprof.model.Aluno;
 import com.developer.fabiano.ifprof.model.Nota;
+import com.developer.fabiano.ifprof.model.Professor;
 import com.developer.fabiano.ifprof.model.Turma;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -49,6 +51,8 @@ public class ActivityAddNotas extends AppCompatActivity {
     private TextView txtTurma;
     private CoordinatorLayout cdlAddNotas;
     String stringQrcode;
+    boolean alunoSemNota = false;
+    private MenuItem itemSave;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,17 +82,18 @@ public class ActivityAddNotas extends AppCompatActivity {
         mList = repositorio.getAlunos(turma.getIdTurma());
 
         List<Nota> notaListSaved = repositorio.getNotas(allInfo.getAvaliacao().getIdAvaliacao(), turma.getIdTurma());
-        if (notaListSaved.size() > 0) {
-            for (int i = 0; i < notaListSaved.size(); i++) {
-                for (int j = 0; j < mList.size(); j++) {
-                    if (notaListSaved.get(i).getAluno().getIdALuno() == mList.get(j).getIdALuno()) {
-
-                        mList.set(j, notaListSaved.get(i).getAluno());
-                    }
+        for (int i = 0; i < notaListSaved.size(); i++) {
+            for (int j = 0; j < mList.size(); j++) {
+                if (notaListSaved.get(i).getAluno().getIdALuno() == mList.get(j).getIdALuno()) {
+                    mList.set(j, notaListSaved.get(i).getAluno());
+                    alunoSemNota = true;
                 }
             }
         }
-        LinearLayout llSemAluno = (LinearLayout)findViewById(R.id.llSemAluno);
+        if (!alunoSemNota){
+            cdlAddNotas.removeView(FABSendNotas);
+        }
+        final LinearLayout llSemAluno = (LinearLayout)findViewById(R.id.llSemAluno);
         if (mList.size() == 0){
             rvAddNotas.setVisibility(View.GONE);
             TextView txtMensage = (TextView)llSemAluno.findViewById(R.id.txtMensage);
@@ -209,13 +214,14 @@ public class ActivityAddNotas extends AppCompatActivity {
                 AlertsAndControl.alert(this,"Todos os registros foram salvos com sucesso!","Salvos");
                 mList.clear();
                 List<Nota> notas = repositorio.getNotas(allInfo.getAvaliacao().getIdAvaliacao(),turma.getIdTurma());
+
                 for (int i = 0; i < notas.size(); i++) {
                     mList.add(notas.get(i).getAluno());
                 }
                 adapterAddNotas = new AdapterAddNotas(ActivityAddNotas.this, mList, allInfo, cdlAddNotas, FABSendNotas,rvAddNotas,false);
                 rvAddNotas.setAdapter(adapterAddNotas);
-                FABSendNotas.setVisibility(View.GONE);
-
+                cdlAddNotas.removeView(FABSendNotas);
+                alunoSemNota = false;
             }
             repositorio.close();
         }catch (SQLiteException e){
@@ -232,6 +238,10 @@ public class ActivityAddNotas extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_notas, menu);
+        itemSave = menu.findItem(R.id.itmSalvar);
+        if(mList.size() == 0){
+            itemSave.setVisible(false);
+        }
         return true;
     }
 
@@ -247,7 +257,18 @@ public class ActivityAddNotas extends AppCompatActivity {
                 integrator.setPrompt("Posicione a camera sobre o QR code");
                 integrator.initiateScan();
                 break;
-
+            case R.id.itmSalvar:
+                if (!alunoSemNota){
+                    repositorio = new Repositorio(this);
+                    Professor professor = repositorio.getLogged();
+                    repositorio.close();
+                    allInfo.setAlunos(mList);
+                    Progress salvarNotas = new Progress(this,allInfo,professor);
+                    salvarNotas.execute();
+                }else{
+                    AlertsAndControl.alert(this,"Ainda há alunos sem nota!","Aviso");
+                }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

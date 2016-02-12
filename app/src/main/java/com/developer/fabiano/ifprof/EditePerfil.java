@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -29,6 +30,8 @@ import com.developer.fabiano.ifprof.adapters.ImageUtil;
 import com.developer.fabiano.ifprof.adapters.Repositorio;
 import com.developer.fabiano.ifprof.database.DataBase;
 import com.developer.fabiano.ifprof.model.Professor;
+
+import java.io.File;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -63,15 +66,12 @@ public class EditePerfil extends AppCompatActivity {
         edtMatriculaProfessorEdite.setText(professorPerfil.getMatricula());
         edtEmail.setText(professorPerfil.getEmail());
         if (!professorPerfil.getUriFoto().equals("null")) {
-            ivEditePerfil.setImageBitmap(ImageUtil.setPic(Uri.parse(professorPerfil.getUriFoto()), ivEditePerfil.getWidth(), ivEditePerfil.getHeight()));
+            ivEditePerfil.setImageBitmap(ImageUtil.setPic(professorPerfil.getUriFoto(), ivEditePerfil.getWidth(), ivEditePerfil.getHeight()));
         }
         ivEditePerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                startActivityForResult(intent, IMAGEM_INTERNA);
-
+                startActivityForResult(Intent.createChooser(new Intent(Intent.ACTION_PICK).setType("image/*"), "Selecione uma imagem"), IMAGEM_INTERNA);
             }
         });
         btnEditarSenha.setOnClickListener(new View.OnClickListener() {
@@ -107,12 +107,24 @@ public class EditePerfil extends AppCompatActivity {
                                 if (AlertsAndControl.check(iptNovaSenha,edtNovaSenha,4,"No mínimo 4 dígitos!")){
                                     String dados = "'" + professorPerfil.getUriFoto() + "' ," + DataBase.NOME_PROFESSOR + " = '" + nome + "', " + DataBase.MATRICULA_PROFESSOR + " = " + matricula+ " , " + DataBase.SENHA + " = '" + edtNovaSenha.getText().toString()+"', " + DataBase.EMAIL + " = '" + email+"'";
                                     repositorio.update(DataBase.TABLE_PROFESSOR, DataBase.URIFOTO, dados, DataBase.ID_PROFESSOR, professorPerfil.getId(), "");
+                                    try {
+                                        String nomeDiretorio = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/";
+                                        AlertsAndControl.renameFile(nomeDiretorio+professorPerfil.getNomeProfessor(),nomeDiretorio+nome);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
                                     backPerfil();
                                 }
                             }
                         }else{
                             String dados = "'" + professorPerfil.getUriFoto() + "' ," + DataBase.NOME_PROFESSOR + " = '" + nome + "', " + DataBase.MATRICULA_PROFESSOR + " = " + matricula+" , "+ DataBase.EMAIL + " = '" + email+"'";
                             repositorio.update(DataBase.TABLE_PROFESSOR, DataBase.URIFOTO, dados, DataBase.ID_PROFESSOR, professorPerfil.getId(), "");
+                            try {
+                                String nomeDiretorio = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/";
+                                AlertsAndControl.renameFile(nomeDiretorio+professorPerfil.getNomeProfessor(),nomeDiretorio+nome);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
                             backPerfil();
                         }
                         repositorio.close();
@@ -204,19 +216,8 @@ public class EditePerfil extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){
         try {
             if(resultCode == RESULT_OK && requestCode == IMAGEM_INTERNA){
-
-                Uri imagemSelecionada = intent.getData();
-
-                String[] colunas = {MediaStore.Images.Media.DATA};
-
-                Cursor cursor = getContentResolver().query(imagemSelecionada, colunas, null, null, null);
-                cursor.moveToFirst();
-
-                int indexColuna = cursor.getColumnIndex(colunas[0]);
-                professorPerfil.setUriFoto(cursor.getString(indexColuna));
-                cursor.close();
-
-                ivEditePerfil.setImageBitmap(ImageUtil.setPic(Uri.parse(professorPerfil.getUriFoto()), ivEditePerfil.getWidth(), ivEditePerfil.getHeight()));
+                professorPerfil.setUriFoto(ImageUtil.getRealPathFromURI(this,intent.getData()));
+                ivEditePerfil.setImageBitmap(ImageUtil.setPic(professorPerfil.getUriFoto(), ivEditePerfil.getWidth(), ivEditePerfil.getHeight()));
             }
         }catch (Exception e){
             Snackbar.make(llEditePerfil, "ocorreu um erro, tente novamente!", Snackbar.LENGTH_LONG).show();
@@ -224,16 +225,11 @@ public class EditePerfil extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == android.R.id.home){
             onBackPressed();
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

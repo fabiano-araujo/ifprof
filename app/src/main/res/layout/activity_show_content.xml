@@ -97,6 +97,75 @@
             app:layout_anchorGravity="bottom|right|end"
             android:src="@drawable/ic_add_white_24dp"
             />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            app:layout_anchor="@id/rvShow"
+            android:orientation="vertical"
+            android:id="@+id/llFabs"
+            android:visibility="gone"
+            android:layout_marginBottom="80dp"
+            app:layout_anchorGravity="bottom|right|end"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:id="@+id/llNova"
+                android:padding="3dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/cardview_dark_background"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="3dp"
+                    android:textColor="@color/colorAccent"
+                    android:paddingTop="3dp"
+                    android:textSize="17sp"
+                    android:text="Nova"/>
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="21dp"
+                    app:borderWidth="0dp"
+                    app:fabSize="mini"
+                    android:src="@drawable/ic_add_white_24dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:id="@+id/llsugeridas"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:layout_gravity="right"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:textSize="17sp"
+                    android:background="@color/cardview_dark_background"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="3dp"
+                    android:textColor="@color/colorAccent"
+                    android:paddingTop="3dp"
+                    android:text="Sugeridas"/>
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/FABAdd6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="21dp"
+                    app:borderWidth="0dp"
+                    app:fabSize="mini"
+                    android:src="@drawable/ic_add_white_24dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nvShow"

@@ -18,8 +18,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -51,10 +54,18 @@ public class ShowTurmas extends AppCompatActivity implements NavigationView.OnNa
     private DrawerLayout dlShowTurmas;
     private ImageView ivNavigation;
     private TextView txtMensage;
+    private LinearLayout llFabs;
+    private LinearLayout llNova;
+    private LinearLayout llSugeridas;
+    Animation animation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_content);
+        llNova = (LinearLayout)findViewById(R.id.llNova);
+        llSugeridas = (LinearLayout)findViewById(R.id.llsugeridas);
+        animation = AnimationUtils.loadAnimation(this, R.anim.slide);
+        llFabs = (LinearLayout)findViewById(R.id.llFabs);
         txtMensage = (TextView)findViewById(R.id.txtShowMensage);
         txtMensage.setText(getResources().getString(R.string.semTurma));
         svShowTurmas = (ScrollView)findViewById(R.id.svShow);
@@ -68,10 +79,12 @@ public class ShowTurmas extends AppCompatActivity implements NavigationView.OnNa
         btnCriarTurma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(ShowTurmas.this, ActivityAddTurmas.class));
                 ShowTurmas.this.finish();
             }
         });
+
         rvTurmas = (RecyclerView)findViewById(R.id.rvShow);
         rvTurmas.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -119,6 +132,13 @@ public class ShowTurmas extends AppCompatActivity implements NavigationView.OnNa
         FABAddTurma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                llFabs.setVisibility(View.VISIBLE);
+                llFabs.startAnimation(animation);
+            }
+        });
+        llNova.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 startActivity(new Intent(ShowTurmas.this, ActivityAddTurmas.class));
                 ShowTurmas.this.finish();
             }
@@ -140,7 +160,7 @@ public class ShowTurmas extends AppCompatActivity implements NavigationView.OnNa
     public void onWindowFocusChanged(boolean hasFocus) {
         if(!professorLogged.getUriFoto().equals("null") && count == 0) {
             count = 1;
-            Bitmap bitmap1 = ImageUtil.setPic(Uri.parse(professorLogged.getUriFoto()), ivNavigation.getWidth(), ivNavigation.getHeight());
+            Bitmap bitmap1 = ImageUtil.setPic(professorLogged.getUriFoto(), ivNavigation.getWidth(), ivNavigation.getHeight());
             if (bitmap1 != null){
                 ivNavigation.setImageBitmap(bitmap1);
             }

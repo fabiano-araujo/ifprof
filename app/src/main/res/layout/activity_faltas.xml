@@ -12,17 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/appBar"
+        android:elevation="3dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <android.support.v7.widget.Toolbar
+            android:id="@+id/tbAddFaltas"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:minHeight="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:theme="@style/TheToobar"
             android:elevation="3dp"
-            android:fitsSystemWindows="true"
-            android:id="@+id/tbAddFaltas"/>
+            >
+        </android.support.v7.widget.Toolbar>
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"

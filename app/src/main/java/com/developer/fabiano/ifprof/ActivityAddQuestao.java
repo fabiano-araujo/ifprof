@@ -1,8 +1,14 @@
 package com.developer.fabiano.ifprof;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +36,8 @@ import com.developer.fabiano.ifprof.model.Disciplina;
 import com.developer.fabiano.ifprof.model.Professor;
 import com.developer.fabiano.ifprof.model.Questao;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,7 +122,7 @@ public class ActivityAddQuestao extends AppCompatActivity {
                 pathImg = questaoAlter.getPathImage();
                 llAddImage.setVisibility(View.VISIBLE);
                 btnAddImage.setVisibility(View.GONE);
-                ivAddImage.setImageBitmap(ImageUtil.setPic(Uri.parse(pathImg), ivAddImage.getWidth(), ivAddImage.getHeight()));
+                ivAddImage.setImageBitmap(ImageUtil.setPic(pathImg, ivAddImage.getWidth(), ivAddImage.getHeight()));
             }
 
             if (questaoAlter.getAlternativaCorreta().equals(" a)")){
@@ -152,7 +160,7 @@ public class ActivityAddQuestao extends AppCompatActivity {
             if (pathImg != null){
                 llAddImage.setVisibility(View.VISIBLE);
                 btnAddImage.setVisibility(View.GONE);
-                ivAddImage.setImageBitmap(ImageUtil.setPic(Uri.parse(pathImg), ivAddImage.getWidth(), ivAddImage.getHeight()));
+                ivAddImage.setImageBitmap(ImageUtil.setPic(pathImg, ivAddImage.getWidth(), ivAddImage.getHeight()));
             }
         }
         btnAddQuestao.setOnClickListener(new View.OnClickListener() {
@@ -240,11 +248,7 @@ public class ActivityAddQuestao extends AppCompatActivity {
         });
     }
     public void intentGalary(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,
-                "Selecione uma imagem"), IMAGEM_INTERNA);
+        startActivityForResult(Intent.createChooser(new Intent(Intent.ACTION_PICK).setType("image/*"), "Selecione uma imagem"), IMAGEM_INTERNA);
     }
     public void instance(){
         tbProvas = (Toolbar)findViewById(R.id.tbProvas);
@@ -279,22 +283,17 @@ public class ActivityAddQuestao extends AppCompatActivity {
 
         spnDisciplina = (AppCompatSpinner)findViewById(R.id.spnDisciplina);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){
         try {
             if (resultCode == RESULT_OK){
                 if(requestCode == IMAGEM_INTERNA){
-                    Uri imagemSelecionada = intent.getData();
-                    pathImg = AlertsAndControl.getPath(imagemSelecionada, ActivityAddQuestao.this);
-                    Bitmap bitmap = ImageUtil.setPic(Uri.parse(pathImg), ivAddImage.getWidth(), ivAddImage.getHeight());
-                    if (bitmap != null){
-                        llAddImage.setVisibility(View.VISIBLE);
-                        btnAddImage.setVisibility(View.GONE);
-                        ivAddImage.setImageBitmap(bitmap);
-                    }else{
-                        Snackbar.make(llAddQuestao, "Ocorreu um erro, escolha outro app para abrir a imagem ou tente novamente!", Snackbar.LENGTH_LONG).show();
-                        Log.i("image null","image return null");
-                    }
+                    pathImg = ImageUtil.getRealPathFromURI(this,intent.getData());;
+                    ivAddImage.setImageBitmap(ImageUtil.setPic(pathImg,ivAddImage.getWidth(),ivAddImage.getHeight()));
+                    llAddImage.setVisibility(View.VISIBLE);
+                    btnAddImage.setVisibility(View.GONE);
+                    btnExcluir.setVisibility(View.VISIBLE);
                 }
             }
         }catch (Exception e){

@@ -1,6 +1,8 @@
 package com.developer.fabiano.ifprof.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,7 +10,9 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -16,8 +20,10 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -38,6 +44,7 @@ import com.developer.fabiano.ifprof.ShowNotas;
 import com.developer.fabiano.ifprof.ShowQuestoes;
 import com.developer.fabiano.ifprof.ShowTurmas;
 import com.developer.fabiano.ifprof.model.AllInfo;
+import com.developer.fabiano.ifprof.model.Aluno;
 import com.developer.fabiano.ifprof.model.Avaliacao;
 import com.developer.fabiano.ifprof.model.Disciplina;
 import com.developer.fabiano.ifprof.model.Falta;
@@ -67,30 +74,9 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-
-/*
-import com.independentsoft.office.word.DrawingObject;
-import com.independentsoft.office.word.Paragraph;
-import com.independentsoft.office.word.Run;
-import com.independentsoft.office.word.WordDocument;
-import com.independentsoft.office.Unit;
-import com.independentsoft.office.UnitType;
-import com.independentsoft.office.drawing.Extents;
-import com.independentsoft.office.drawing.Offset;
-import com.independentsoft.office.drawing.Picture;
-import com.independentsoft.office.drawing.PresetGeometry;
-import com.independentsoft.office.drawing.ShapeType;
-import com.independentsoft.office.drawing.Transform2D;
-import com.independentsoft.office.word.drawing.DrawingObjectSize;
-import com.independentsoft.office.word.drawing.Inline;
-import com.independentsoft.office.word.StandardBorderStyle;
-import com.independentsoft.office.word.tables.Cell;
-import com.independentsoft.office.word.tables.Row;
-import com.independentsoft.office.word.tables.Table;
-import com.independentsoft.office.word.tables.TableWidthUnit;
-import com.independentsoft.office.word.tables.Width;*/
 
 public class AlertsAndControl {
     public static final String AVALIACOES = "avaliacoes";
@@ -236,6 +222,18 @@ public class AlertsAndControl {
         p.add(text);
         return p;
     }
+    public static PdfPTable getTable(ArrayList<String> colunas,List<Integer> sizes) {
+        float[] columnWidths = new float[sizes.size()];
+        for (int i = 0; i < sizes.size(); i++) {
+            columnWidths[i] = sizes.get(i);
+        }
+        PdfPTable table = new PdfPTable(columnWidths);
+        table.setWidthPercentage(97);
+        for (int i = 0; i < colunas.size(); i++) {
+            table.addCell(colunas.get(i));
+        }
+        return table;
+    }
     public static PdfPTable getTable(ArrayList<String> colunas) {
         PdfPTable table = new PdfPTable(colunas.size());
         table.setWidthPercentage(97);
@@ -244,7 +242,7 @@ public class AlertsAndControl {
         }
         return table;
     }
-    public static String saveHistorico(Historico historico,Professor professor,Turma turma,String data,String numberFile,boolean sizeAulasMinisDiferente){
+    public static String savarHistorico(Historico historico, Professor professor, Turma turma, String data, String numberFile, boolean sizeAulasMinisDiferente){
         String file = null;
         String nomeDiretorio = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/"+professor.getNomeProfessor()+"/"+historico.getDisciplina().getNomeDisciplina()+"/"+turma.getNomeTurma()+"/lista de presença";
 
@@ -282,7 +280,7 @@ public class AlertsAndControl {
                 for (int j = 0; j <falta.getAulasMinistradasList().size() ; j++) {
                     aulasMinistradas += Integer.parseInt(falta.getAulasMinistradasList().get(j));
                 }
-                colunas.add("Aulas ministradas: " + aulasMinistradas);
+                colunas.add("Aulas: " + aulasMinistradas);
             }
 
             document.add(getTable(colunas));
@@ -292,9 +290,18 @@ public class AlertsAndControl {
             colunas.add("Faltas");
 
             if (data == null && sizeAulasMinisDiferente){
-                colunas.add("Aulas ministradas");
+                colunas.add("Aulas");
             }
-            document.add(getTable(colunas));
+            List<Integer> sizes = new ArrayList<>();
+            if (colunas.size() < 3){
+                sizes.add(3);
+                sizes.add(1);
+            }else{
+                sizes.add(3);
+                sizes.add(1);
+                sizes.add(1);
+            }
+            document.add(getTable(colunas,sizes));
             List<Falta> faltaList = historico.getFaltaList();
             for (int i = 0; i < faltaList.size(); i++) {
                 String count = "";
@@ -320,15 +327,88 @@ public class AlertsAndControl {
                         colunas.add(aulasMinistradas+"");
                     }
                 }
-                document.add(getTable(colunas));
+                sizes.clear();
+                if (colunas.size() < 3){
+                    sizes.add(3);
+                    sizes.add(1);
+                }else{
+                    sizes.add(3);
+                    sizes.add(1);
+                    sizes.add(1);
+                }
+                document.add(getTable(colunas,sizes));
+            }
+            document.close();
+        }
+        catch (Exception e){        
+            e.printStackTrace();
+        }
+        return file;
+    }
+    public static String savarNotas(AllInfo allInfo,Professor professor){
+        String file = null;
+        String nomeDiretorio = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/"+professor.getNomeProfessor()+"/"+allInfo.getDisciplina().getNomeDisciplina()+"/notas";
+        file = nomeDiretorio+"/"+allInfo.getAvaliacao().getAssunto()+"-"+allInfo.getTurma().getNomeTurma()+".pdf";
+        if (!new File(nomeDiretorio).exists()) {
+            (new File(nomeDiretorio)).mkdirs();
+        }
+        try{
+            Document document = new Document();
+            PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+
+            Paragraph p = new Paragraph();
+            p.setAlignment(Element.ALIGN_CENTER);
+            p.setFont(FontFactory.getFont("Lohit Punjabi", 22));
+            p.add("Notas de "+allInfo.getDisciplina().getNomeDisciplina()+" da turma "+allInfo.getTurma().getNomeTurma()+" "+allInfo.getAvaliacao().getBimestre());
+            document.add(p);
+
+            document.add(getParagraph(13, " ", "Arial"));
+
+            ArrayList<String> colunas = new ArrayList<>();
+
+            colunas.add("Assunto: " + allInfo.getAvaliacao().getAssunto());
+            colunas.add("Dia da aplicacao: " + allInfo.getAvaliacao().getData());
+            colunas.add("Valor: " + allInfo.getAvaliacao().getValor());
+
+            document.add(getTable(colunas));
+
+            colunas.clear();
+            colunas.add("Nome");
+            colunas.add("Nota");
+
+            List<Integer> sizes = new ArrayList<>();
+            sizes.add(3);
+            sizes.add(1);
+            document.add(getTable(colunas,sizes));
+
+            for (int i = 0; i < allInfo.getAlunos().size(); i++) {
+                String count = "";
+                if (i < 9){
+                    count = "0"+(i+1)+".  ";
+                }else{
+                    count = (i+1)+".  ";
+                }
+
+                colunas.clear();
+                colunas.add(count + allInfo.getAlunos().get(i).getNomeAluno());
+                colunas.add(allInfo.getAlunos().get(i).getNota());
+                document.add(getTable(colunas,sizes));
             }
             document.close();
         }
         catch (Exception e){
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
         return file;
+    }
+    public static boolean renameFile(String from, String to ){
+        File file = new File(from);
+        if (file.renameTo(new File(to))){
+            return true;
+        }else {
+            return false;
+        }
     }
     public static String saveAvaliacao(Prova prova, Context context, String mais) throws Exception {
         String file = null;
@@ -378,7 +458,7 @@ public class AlertsAndControl {
 
             for (int i = 0; i < prova.getAvaliacao().getQuestoes().size(); i++) {
                 String count = "";
-                if (i < 10){
+                if (i < 9){
                     count = "0"+(i+1)+".  ";
                 }else{
                     count = (i+1)+".  ";
@@ -562,7 +642,7 @@ public class AlertsAndControl {
             return null;
         }
     }
-    public static void sendEmail(String path,Context context,String email,String title){
+    public static void sendEmail(String path,Context context,String email,String title) {
         File file = new File(path);
         Uri uri = Uri.fromFile(file);
 
@@ -575,22 +655,5 @@ public class AlertsAndControl {
 
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, title);
         context.startActivity(Intent.createChooser(emailIntent, "Enviar arquivo"));
-    }
-    public static String getPath(Uri uri,Context context) {
-        if( uri == null ) {
-            return null;
-        }
-        // Tenta recuperar a imagem da media store primeiro
-        // Isto só irá funcionar para as imagens selecionadas da galeria
-        String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor = ((Activity)context).managedQuery(uri, projection, null, null, null);
-        if( cursor != null ){
-            int column_index = cursor
-                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        }
-
-        return uri.getPath();
     }
 }

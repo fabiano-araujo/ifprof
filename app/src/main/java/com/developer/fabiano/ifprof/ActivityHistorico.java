@@ -61,7 +61,6 @@ public class ActivityHistorico extends AppCompatActivity {
     private Turma turma = new Turma();
     private Professor professor;
     private ArrayAdapter daysAdapter;
-    int countDialog = 0;
     int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,9 +131,7 @@ public class ActivityHistorico extends AppCompatActivity {
                                 case R.id.rbOutro:
                                     try {
                                         and = " and " + DataBase.DATA + " == '" + spnOutro.getSelectedItem().toString() + "'";
-                                    } catch (NullPointerException e) {
-
-                                    }
+                                    } catch (NullPointerException e) {}
                                     break;
                             }
                             try {
@@ -142,6 +139,11 @@ public class ActivityHistorico extends AppCompatActivity {
                                 historico = repositorio.getHistorico(historico, and);
                                 daysAdapter = repositorio.getDays(historico);
                                 spnOutro.setAdapter(daysAdapter);
+                                try{
+                                    spnOutro.setSelection(daysAdapter.getCount()-1);
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
                                 repositorio.close();
                             } catch (IndexOutOfBoundsException iobe) {
                                 ArrayAdapter<String> days = new ArrayAdapter<String>(ActivityHistorico.this, android.R.layout.simple_spinner_item);
@@ -149,6 +151,11 @@ public class ActivityHistorico extends AppCompatActivity {
                                 days.setDropDownViewResource(android.R.layout.simple_list_item_1);
                                 daysAdapter = days;
                                 spnOutro.setAdapter(days);
+                                try{
+                                    spnOutro.setSelection(daysAdapter.getCount()-1);
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
                             } catch (Exception e) {
                                 AlertsAndControl.alert(ActivityHistorico.this, e.getMessage(), "Erro");
                             }
@@ -191,11 +198,7 @@ public class ActivityHistorico extends AppCompatActivity {
                 return false;
             }
         });
-        try{
-            spnOutro.setSelection(spnOutro.getCount()-1);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
         spnOutro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

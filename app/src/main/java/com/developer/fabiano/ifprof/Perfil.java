@@ -173,8 +173,8 @@ public class Perfil extends AppCompatActivity implements NavigationView.OnNaviga
     public void onWindowFocusChanged(boolean hasFocus) {
         if(!professorPerfil.getUriFoto().equals("null") && count == 0) {
             count = 1;
-            Bitmap bitmap1 = ImageUtil.setPic(Uri.parse(professorPerfil.getUriFoto()), ivNavigation.getWidth(), ivNavigation.getHeight());
-            Bitmap bitmap2 = ImageUtil.setPic(Uri.parse(professorPerfil.getUriFoto()), ivPerfilCl.getWidth(), ivPerfilCl.getHeight());
+            Bitmap bitmap1 = ImageUtil.setPic(professorPerfil.getUriFoto(), ivNavigation.getWidth(), ivNavigation.getHeight());
+            Bitmap bitmap2 = ImageUtil.setPic(professorPerfil.getUriFoto(), ivPerfilCl.getWidth(), ivPerfilCl.getHeight());
             if (bitmap1 != null && bitmap2 != null){
                 ivNavigation.setImageBitmap(bitmap1);
                 ivPerfilCl.setImageBitmap(bitmap2);

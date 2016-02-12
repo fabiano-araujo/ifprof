@@ -3,6 +3,7 @@ package com.developer.fabiano.ifprof;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSpinner;
@@ -11,6 +12,7 @@ import android.text.InputFilter;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -139,6 +141,12 @@ public class ActivityAddDisciplinas extends AppCompatActivity {
                                 String more = "and " + DataBase.NOME_DISCIPLINA + " == '" + disciplina.getNomeDisciplina() + "'";
                                 String nome = edtNomeDisciplina.getText().toString().substring(0, 1).toUpperCase().concat(edtNomeDisciplina.getText().toString().substring(1)).trim();
                                 repositorio.update(DataBase.TABLE_DISCIPLINA, DataBase.NOME_DISCIPLINA, "'" + nome + "'", DataBase.ID_PROFESSOR, professorLogged.getId(), more);
+                                try{
+                                    String nomeDiretorio = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/"+professorLogged.getNomeProfessor()+"/";
+                                    AlertsAndControl.renameFile(nomeDiretorio + disciplina.getNomeDisciplina(), nomeDiretorio + nome);
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
                                 repositorio.delete(DataBase.TABLE_TURMA_DISCIPLINA, "where " + DataBase.ID_DISCIPLINA + " == " + disciplina.getIdDisciplina());
                                 disciplina.setTurmas(allTurmas);
                                 repositorio.insertTurmaDisciplina(disciplina);
@@ -163,6 +171,7 @@ public class ActivityAddDisciplinas extends AppCompatActivity {
                                 Spinner spinner = (Spinner) allSpinners.get(i).findViewById(R.id.spnAddOutra);
                                 turmas += DataBase.NOME_TURMA + " == '" + spinner.getSelectedItem().toString() + "' or ";
                             }
+
                             turmas = turmas.substring(0, turmas.length() - 4);
                             List<Turma> allTurmas = repositorio.getTurmas(professorLogged, " and ( " + turmas + " )");
                             disciplina.setNomeDisciplina(edtNomeDisciplina.getText().toString().substring(0, 1).toUpperCase().concat(edtNomeDisciplina.getText().toString().substring(1)).trim());

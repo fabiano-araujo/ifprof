@@ -178,6 +178,8 @@ public class AlternativasMarcadas extends AppCompatActivity {
                         mensage = "Esse aluno tirou " + somaDaNota + ". Salvar nota?";
                         alert();
 
+                    }else{
+                        AlertsAndControl.alert(AlternativasMarcadas.this,"Esse aluno tirou " + somaDaNota + ".","Nota");
                     }
                 }
             });

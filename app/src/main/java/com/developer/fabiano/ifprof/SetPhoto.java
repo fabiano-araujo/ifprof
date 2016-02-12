@@ -3,6 +3,7 @@ package com.developer.fabiano.ifprof;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,6 +23,9 @@ import com.developer.fabiano.ifprof.adapters.ImageUtil;
 import com.developer.fabiano.ifprof.adapters.Repositorio;
 import com.developer.fabiano.ifprof.database.DataBase;
 import com.developer.fabiano.ifprof.model.Professor;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 
 public class SetPhoto extends AppCompatActivity {
@@ -102,28 +106,18 @@ public class SetPhoto extends AppCompatActivity {
             }
         });
         if (savedInstanceState != null){
+            pathImg = savedInstanceState.getString("image");
+            ivSetPhoto.setImageBitmap(ImageUtil.setPic(pathImg, ivSetPhoto.getWidth(), ivSetPhoto.getHeight()));
             btnSetPhoto.setText(savedInstanceState.getString("button"));
-        }
-    }
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        try {
-            if (!showed){
-                if (savedInstanceState != null){
-                    pathImg = savedInstanceState.getString("image");
-                    ivSetPhoto.setImageBitmap(ImageUtil.setPic(Uri.parse(pathImg), ivSetPhoto.getWidth(), ivSetPhoto.getHeight()));
-                }else if (getIntent().getStringExtra("image") != null && !getIntent().getStringExtra("image").equals("null")) {
-                    pathImg = getIntent().getStringExtra("image");
-                    Bitmap bitmap = ImageUtil.setPic(Uri.parse(getIntent().getStringExtra("image")), ivSetPhoto.getWidth(), ivSetPhoto.getHeight());
-                    if(bitmap != null){
-                        ivSetPhoto.setImageBitmap(bitmap);
-                    }
-                    btnSetPhoto.setText("Feito");
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                }
-                showed = true;
+        }else if (getIntent().getStringExtra("image") != null && !getIntent().getStringExtra("image").equals("null")) {
+            pathImg = getIntent().getStringExtra("image");
+            Bitmap bitmap = ImageUtil.setPic(getIntent().getStringExtra("image"), ivSetPhoto.getWidth(), ivSetPhoto.getHeight());
+            if(bitmap != null){
+                ivSetPhoto.setImageBitmap(bitmap);
             }
-        }catch (Exception e){}
+            btnSetPhoto.setText("Feito");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
@@ -135,33 +129,22 @@ public class SetPhoto extends AppCompatActivity {
 
     public void intentGalery(){
         tipo = 0;
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,
-                "Selecione uma imagem"), IMAGEM_INTERNA);
+        startActivityForResult(Intent.createChooser(new Intent(Intent.ACTION_PICK).setType("image/*"), "Selecione uma imagem"), IMAGEM_INTERNA);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent){
         try {
             if (resultCode == RESULT_OK){
                 if(requestCode == IMAGEM_INTERNA && tipo == 0){
-                    Uri imagemSelecionada = intent.getData();
-                    pathImg = AlertsAndControl.getPath(imagemSelecionada,SetPhoto.this);
-                    Bitmap bitmap = ImageUtil.setPic(Uri.parse(pathImg), ivSetPhoto.getWidth(), ivSetPhoto.getHeight());
-                    if (bitmap != null){
-                        ivSetPhoto.setImageBitmap(bitmap);
-                    }else{
-                        Snackbar.make(llSetPhoto, "Ocorreu um erro, escolha outro app para abrir a imagem ou tente novamente!", Snackbar.LENGTH_LONG).show();
-                        Log.i("image galeria","image null");
-                    }
+                    pathImg = ImageUtil.getRealPathFromURI(this,intent.getData());
+                    ivSetPhoto.setImageBitmap(ImageUtil.setPic(pathImg,ivSetPhoto.getWidth(),ivSetPhoto.getHeight()));
                     btnSetPhoto.setText("Feito");
                 }else if(requestCode == IMAGEM_INTERNA){
                     //imagem veio da camera
                     Bundle extras = intent.getExtras();
                     Bitmap imagem = (Bitmap) extras.get("data");
                     pathImg = AlertsAndControl.savePhoto(imagem,this,professor,false);
-                    Bitmap bitmap = ImageUtil.setPic(Uri.parse(pathImg), ivSetPhoto.getWidth(), ivSetPhoto.getHeight());
+                    Bitmap bitmap = ImageUtil.setPic(pathImg, ivSetPhoto.getWidth(), ivSetPhoto.getHeight());
                     if (bitmap != null){
                         ivSetPhoto.setImageBitmap(bitmap);
                     }else{

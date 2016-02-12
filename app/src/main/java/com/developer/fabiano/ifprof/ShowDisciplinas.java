@@ -158,7 +158,7 @@ public class ShowDisciplinas extends AppCompatActivity implements NavigationView
     public void onWindowFocusChanged(boolean hasFocus) {
         if(!professorLogged.getUriFoto().equals("null") && count == 0) {
             count = 1;
-            Bitmap bitmap1 = ImageUtil.setPic(Uri.parse(professorLogged.getUriFoto()), ivNavigation.getWidth(), ivNavigation.getHeight());
+            Bitmap bitmap1 = ImageUtil.setPic(professorLogged.getUriFoto(), ivNavigation.getWidth(), ivNavigation.getHeight());
             if (bitmap1 != null){
                 ivNavigation.setImageBitmap(bitmap1);
             }

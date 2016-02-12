@@ -14,12 +14,14 @@ import android.widget.EditText;
 
 import com.developer.fabiano.ifprof.R;
 import com.developer.fabiano.ifprof.ShowAvaliacoes;
+import com.developer.fabiano.ifprof.model.AllInfo;
 import com.developer.fabiano.ifprof.model.Historico;
 import com.developer.fabiano.ifprof.model.Professor;
 import com.developer.fabiano.ifprof.model.Prova;
 import com.developer.fabiano.ifprof.model.Turma;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Created by fabiano on 08/01/16.
@@ -34,19 +36,26 @@ public class Progress extends AsyncTask<Void, Void, String> {
     private Turma turma;
     private Professor professor;
     private String data;
+    private AllInfo allInfo;
     private boolean aulasMinistradasDiferente;
 
     public Progress(Context context, Prova prova, int numberFile) {
         this.context = context;
         this.prova = prova;
         this.numberFile = numberFile;
-        mensage = "Criando prova";
+        mensage = "Gerando prova";
+    }
+    public Progress(Context context,AllInfo allInfo,Professor professor){
+        this.professor = professor;
+        this.context = context;
+        this.allInfo =allInfo;
+        mensage = "Salvando notas";
     }
     public Progress(Context context, Historico historico,Professor professor,Turma turma,String data, int numberFile,boolean aulasMinistradasDiferente) {
         this.context = context;
         this.prova = prova;
         this.numberFile = numberFile;
-        mensage = "gerando historico";
+        mensage = "Gerando historico";
         this.historico = historico;
         this.turma = turma;
         this.professor =professor;
@@ -64,7 +73,7 @@ public class Progress extends AsyncTask<Void, Void, String> {
     }
     @Override
     protected String doInBackground(Void... params) {
-        if ("Criando prova".equals(mensage)){
+        if ("Gerando prova".equals(mensage)){
             try {
                 if (numberFile == 0){
                     return AlertsAndControl.saveAvaliacao(prova, context, "");
@@ -74,14 +83,19 @@ public class Progress extends AsyncTask<Void, Void, String> {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else{
-
+        }else if("Gerando historico".equals(mensage)){
             try {
                 if (numberFile == 0){
-                    return AlertsAndControl.saveHistorico(historico,professor,turma,data,"",aulasMinistradasDiferente);
+                    return AlertsAndControl.savarHistorico(historico, professor, turma, data, "", aulasMinistradasDiferente);
                 }else{
-                    return AlertsAndControl.saveHistorico(historico, professor,turma,data,"("+numberFile+")",aulasMinistradasDiferente);
+                    return AlertsAndControl.savarHistorico(historico, professor, turma, data, "(" + numberFile + ")", aulasMinistradasDiferente);
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            try {
+               return AlertsAndControl.savarNotas(allInfo,professor);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -99,7 +113,7 @@ public class Progress extends AsyncTask<Void, Void, String> {
         save.setMessage("Arquivo salvo em "+saveAt+". Enviar para o seu email?").setNegativeButton("Não", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if ("Criando prova".equals(mensage)){
+                if ("Gerando prova".equals(mensage)){
                     context.startActivity(new Intent(context, ShowAvaliacoes.class));
                     ((Activity)context).finish();
                 }
@@ -107,15 +121,18 @@ public class Progress extends AsyncTask<Void, Void, String> {
         }).setPositiveButton("enviar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if ("Criando prova".equals(mensage)){
+                if ("Gerando prova".equals(mensage)){
                     sendEmail(prova, saveAt, prova.getProfessor().getEmail());
-                }else{
+                }else if("Gerando historico".equals(mensage)){
                     String title = "Histórico de "+historico.getDisciplina().getNomeDisciplina()+" da turma "+turma.getNomeTurma()+".";
                     if (data != null){
                         if (data.length() > 0){
                             title = "Histórico de "+historico.getDisciplina().getNomeDisciplina()+" da turma "+turma.getNomeTurma()+"_"+data+".";
                         }
                     }
+                    AlertsAndControl.sendEmail(saveAt,context,professor.getEmail(),title);
+                }else{
+                    String title = "Notas de "+allInfo.getDisciplina().getNomeDisciplina()+" da turma "+allInfo.getTurma().getNomeTurma()+".";
                     AlertsAndControl.sendEmail(saveAt,context,professor.getEmail(),title);
                 }
             }
@@ -171,15 +188,18 @@ public class Progress extends AsyncTask<Void, Void, String> {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     if (AlertsAndControl.isValidEmailAddress(edtOutroEmail, textInputLayout)) {
-                        if ("Criando prova".equals(mensage)){
+                        if ("Gerando prova".equals(mensage)){
                             sendEmail(prova, saveAt, edtOutroEmail.getText().toString());
-                        }else{
+                        }else if("Gerando historico".equals(mensage)){
                             String title = "Histórico de "+historico.getDisciplina()+" da turma "+turma.getNomeTurma()+".";
                             if(data != null){
                                 if (data.length() > 0){
                                     title = "Histórico de "+historico.getDisciplina()+" da turma "+turma.getNomeTurma()+" - "+data+".";
                                 }
                             }
+                            AlertsAndControl.sendEmail(saveAt,context,edtOutroEmail.getText().toString(),title);
+                        }else{
+                            String title = "Notas de "+allInfo.getDisciplina().getNomeDisciplina()+" da turma "+allInfo.getTurma().getNomeTurma()+".";
                             AlertsAndControl.sendEmail(saveAt,context,edtOutroEmail.getText().toString(),title);
                         }
                     } else {

@@ -55,7 +55,7 @@ public class VerQuestao extends AppCompatActivity {
             txtVerPergunta.setText(questao.getPergunta());
             if (questao.getPathImage() != null){
                 ivImage.setVisibility(View.VISIBLE);
-                ivImage.setImageBitmap(ImageUtil.setPic(Uri.parse(questao.getPathImage()), ivImage.getWidth(), ivImage.getHeight()));
+                ivImage.setImageBitmap(ImageUtil.setPic(questao.getPathImage(), ivImage.getWidth(), ivImage.getHeight()));
             }
             txtAlternativaCorreta.setText(txtAlternativaCorreta.getText()+" "+questao.getAlternativaCorreta());
             txtAlternativaA.setText(" a) "+questao.getAlternativaA());

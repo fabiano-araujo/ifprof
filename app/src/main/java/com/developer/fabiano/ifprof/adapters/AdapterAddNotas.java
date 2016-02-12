@@ -85,16 +85,16 @@ public class AdapterAddNotas extends RecyclerView.Adapter<AdapterAddNotas.MyView
             myViewHolder.edtNota.setVisibility(View.GONE);
             myViewHolder.txtNota.setText(mList.get(position).getNota());
             showSave[position] = true;
-            if (notSaved == false){
+            /*if (notSaved == false){
                 floatingActionButton.setVisibility(View.GONE);
-            }
+                coordinatorLayout.removeView(floatingActionButton);
+            }*/
         }
         if (somethingSaved && mList.get(position).getNota().trim().equals("")){
             myViewHolder.txtAlertNota.setVisibility(View.VISIBLE);
             alunoList.add(mList.get(position));
             showAlert[position] = true;
             notSaved = true;
-            floatingActionButton.setVisibility(View.VISIBLE);
         }
         final String nota = mList.get(position).getNota();
         myViewHolder.ivEnviarNota.setOnClickListener(new View.OnClickListener() {
@@ -186,16 +186,13 @@ public class AdapterAddNotas extends RecyclerView.Adapter<AdapterAddNotas.MyView
                         repositorio.insertNota(alunoSelecionado);
 
                         List<Nota> notaListSaved = repositorio.getNotas(allInfo.getAvaliacao().getIdAvaliacao(), allInfo.getTurma().getIdTurma());
-                        if (notaListSaved.size() > 0) {
-                            for (int i = 0; i < notaListSaved.size(); i++) {
-                                for (int j = 0; j < mList.size(); j++) {
-                                    if (notaListSaved.get(i).getAluno().getIdALuno() == mList.get(j).getIdALuno()) {
-                                        mList.set(j, notaListSaved.get(i).getAluno());
-                                    }
+                        for (int i = 0; i < notaListSaved.size(); i++) {
+                            for (int j = 0; j < mList.size(); j++) {
+                                if (notaListSaved.get(i).getAluno().getIdALuno() == mList.get(j).getIdALuno()) {
+                                    mList.set(j, notaListSaved.get(i).getAluno());
                                 }
                             }
                         }
-
                         repositorio.close();
                         recyclerView.setAdapter(new AdapterAddNotas(mContext, mList, allInfo, coordinatorLayout, floatingActionButton, recyclerView, false));
                     }
