@@ -54,7 +54,7 @@ public class VerAluno extends AppCompatActivity {
         txtsemDisciplina.setText(getResources().getString(R.string.semDisciplina));
 
         TextView txtsemAvaliacao = (TextView)semAvaliacao.findViewById(R.id.txtMensage);
-        txtsemDisciplina.setText(getResources().getString(R.string.semAvaliacao));
+        txtsemAvaliacao.setText(getResources().getString(R.string.semAvaliacao));
 
         try {
             for (int i = 0; i < disciplinaList.size() ; i++) {

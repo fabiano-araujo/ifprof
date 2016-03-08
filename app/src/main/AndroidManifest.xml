@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <receiver
-            android:name="com.developer.fabiano.ifprof.adapters.BroadcastManager"
+            android:name=".adapters.BroadcastManager"
             android:label="BroadcastReceiverAux">
             <intent-filter>
                 <action android:name="ALARME_DISPARADO" />
@@ -27,13 +27,13 @@
         </receiver>
 
         <activity
-            android:name="com.developer.fabiano.ifprof.Login"
+            android:name=".Login"
             android:label="@string/app_name" />
         <activity
-            android:name="com.developer.fabiano.ifprof.Cadastro"
+            android:name=".Cadastro"
             android:label="@string/title_activity_cadastro" />
         <activity
-            android:name="com.developer.fabiano.ifprof.MenuMain"
+            android:name=".MenuMain"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,90 +42,93 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.developer.fabiano.ifprof.ActivityAddDisciplinas"
+            android:name=".ActivityAddDisciplinas"
             android:label="@string/title_activity_disciplina" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ActivityAddTurmas"
+            android:name=".ActivityAddTurmas"
             android:label="@string/title_activity_turmas" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ActivityAddAlunos"
+            android:name=".ActivityAddAlunos"
             android:label="@string/title_activity_alunos" />
         <activity
-            android:name="com.developer.fabiano.ifprof.Perfil"
+            android:name=".Perfil"
             android:label="@string/title_activity_perfil" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ActivityAddAvaliacoes"
+            android:name=".ActivityAddAvaliacoes"
             android:label="@string/title_activity_avaliacoes" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ActivityAddNotas"
+            android:name=".ActivityAddNotas"
             android:label="@string/title_activity_notas"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ActivityAddFaltas"
+            android:name=".ActivityAddFaltas"
             android:label="Fazer chamada"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.developer.fabiano.ifprof.SetPhoto"
+            android:name=".SetPhoto"
             android:label="@string/title_activity_set_photo" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ShowTurmas"
+            android:name=".ShowTurmas"
             android:label="@string/title_activity_show_turmas" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ShowDisciplinas"
+            android:name=".ShowDisciplinas"
             android:label="@string/title_activity_show_disciplinas" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ShowAlunos"
+            android:name=".ShowAlunos"
             android:label="@string/title_activity_show_alunos" />
         <activity
-            android:name="com.developer.fabiano.ifprof.SeeMore"
+            android:name=".SeeMore"
             android:label="@string/title_activity_see_more" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ShowAvaliacoes"
+            android:name=".ShowAvaliacoes"
             android:label="@string/title_activity_show_avaliacoes"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.developer.fabiano.ifprof.Detalhes"
+            android:name=".Detalhes"
             android:label="@string/title_activity_see_more" />
         <activity
-            android:name="com.developer.fabiano.ifprof.EditePerfil"
+            android:name=".EditePerfil"
             android:label="Editar perfil" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ShowFaltas"
+            android:name=".ShowFaltas"
             android:label="@string/title_activity_faltas" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ActivityHistorico"
+            android:name=".ActivityHistorico"
             android:label="Histórico" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ShowNotas"
+            android:name=".ShowNotas"
             android:label="Notas" />
         <activity
-            android:name="com.developer.fabiano.ifprof.AlunoHistorico"
+            android:name=".AlunoHistorico"
             android:label="Histórico" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ActivityAddQuestao"
+            android:name=".ActivityAddQuestao"
             android:label="Adicionar questão" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ShowQuestoes"
+            android:name=".ShowQuestoes"
             android:label="Questões" />
         <activity
-            android:name="com.developer.fabiano.ifprof.VerQuestao"
+            android:name=".VerQuestao"
             android:label="Ver questão" />
         <activity
-            android:name="com.developer.fabiano.ifprof.ActivityProva"
+            android:name=".ActivityProva"
             android:label="Valor das questões"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.developer.fabiano.ifprof.VerAluno"
+            android:name=".VerAluno"
             android:label="nome" />
-        <activity android:name="com.developer.fabiano.ifprof.SearchableActivity" />
+        <activity android:name=".SearchableActivity" />
         <activity
-            android:name="com.developer.fabiano.ifprof.Apresentation"
+            android:name=".Apresentation"
             android:label="@string/title_activity_apresentation"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.developer.fabiano.ifprof.AlternativasMarcadas"
+            android:name=".AlternativasMarcadas"
             android:label="@string/title_activity_alternativas_marcadas"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".RecuperarSenha"
+            android:label="Recuperar senha"
+            ></activity>
     </application>
 
 </manifest>

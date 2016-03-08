@@ -35,14 +35,13 @@ public class Login extends AppCompatActivity {
     private TextInputLayout iptsenha;
     private Button btnCadastrar;
     private Button btnEntrar;
-    private Button btnList;
     private Repositorio repositorio;
     private SwitchCompat switchCompat;
     private Toolbar tbLogin;
     private LinearLayout llLogin;
     public Context context;
     private AppCompatCheckBox saveLogin;
-    private static final String SHOW = "Show,";
+    private Button btnEsqueciSenha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +58,12 @@ public class Login extends AppCompatActivity {
         }catch(SQLiteException e){
            AlertsAndControl.alert(this, e.getMessage(),"Erro");
         }
+        btnEsqueciSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this,RecuperarSenha.class));
+            }
+        });
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,18 +83,18 @@ public class Login extends AppCompatActivity {
                             Snackbar.make(llLogin,"Matrícula ou senha incorretos!",Snackbar.LENGTH_LONG).setAction("Esqueceu sua senha?", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    AlertsAndControl.alert(Login.this, "ok","Ajuda");
+                                    startActivity(new Intent(Login.this, RecuperarSenha.class));
                                 }
                             }).show();
                         }
                     }else{
                         Snackbar.make(llLogin,"Informe os dados corretamente!",Snackbar.LENGTH_LONG).setAction("Esqueceu sua senha?", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                AlertsAndControl.alert(Login.this, "ok","Ajuda");
-                            }
-                        }).show();
-                    }
+                        @Override
+                        public void onClick(View v) {
+                            AlertsAndControl.alert(Login.this, "Informe sua matrícula e senha. Caso não tenha uma conta clique no botão cadastrar!","Ajuda");
+                        }
+                    }).show();
+                }
                 }catch (Exception e){
                     AlertsAndControl.alert(Login.this,e.getMessage(),"Erro");
                 }
@@ -199,6 +204,7 @@ public class Login extends AppCompatActivity {
         iptMatricula = (TextInputLayout)findViewById(R.id.iptMatricula);
         iptsenha = (TextInputLayout)findViewById(R.id.iptSenha);
         saveLogin = (AppCompatCheckBox)findViewById(R.id.cbSaveLogin);
+        btnEsqueciSenha = (Button)findViewById(R.id.btnEsqueceuSenha);
     }
 }
 

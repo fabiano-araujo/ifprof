@@ -181,7 +181,6 @@ public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.MyVi
                             DatePickerDialog dlg = new DatePickerDialog(mContext, new DatePickerDialog.OnDateSetListener() {
                                 @Override
                                 public void onDateSet(DatePicker view, int yea, int monthOfYear, int dayOfMonth) {
-                                    edtDiaAlHt.setText(dayOfMonth + "/" + (monthOfYear + 1)+ "/" + yea);
                                     day = dayOfMonth+"";
                                     if (day.length() == 1){
                                         day = "0"+day;
@@ -191,6 +190,7 @@ public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.MyVi
                                         month = "0"+month;
                                     }
                                     year = yea+"";
+                                    edtDiaAlHt.setText(day + "/" + month+ "/" + year);
                                 }
                             }, Integer.parseInt(ano.format(date)), Integer.parseInt(mes.format(date)) - 1, Integer.parseInt(dia.format(date)));
                             dlg.show();

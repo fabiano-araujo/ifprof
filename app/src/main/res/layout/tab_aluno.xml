@@ -39,7 +39,7 @@
                     android:layout_marginTop="50dp"
                     android:id="@+id/txtShowMensage"
                     android:gravity="center_horizontal"
-                    android:text="Você não tem nenhuma aluno nessa turma !"
+                    android:text="Você não tem nenhum aluno nessa turma !"
                     android:layout_marginBottom="16dp"
                     android:textSize="20sp"/>
                 <LinearLayout
@@ -51,7 +51,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:text="criar"
+                        android:text="Adicionar"
                         android:id="@+id/btnCriar"
                         android:layout_gravity="bottom"
                         android:textColor="@color/colorAccent"

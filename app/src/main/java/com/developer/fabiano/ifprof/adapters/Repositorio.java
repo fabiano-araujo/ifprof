@@ -404,20 +404,38 @@ public class Repositorio {
         //returna o professor logado
         Professor professor = new Professor();
         professor.setOnline("off");
-        Cursor cursor = db.rawQuery("select * from professor;",null);
+        Cursor cursor = db.rawQuery("select * from professor where "+DataBase.LOGGED+" = 'on';",null);
         if (cursor.getCount() > 0){
             cursor.moveToFirst();
             do {
-                if (cursor.getString(4).equalsIgnoreCase("on")){
-                    professor.setId(cursor.getInt(0));
-                    professor.setNomeProfessor(cursor.getString(1));
-                    professor.setMatricula(cursor.getString(2));
-                    professor.setSenha(cursor.getString(3));
-                    professor.setOnline(cursor.getString(4));
-                    professor.setUriFoto(cursor.getString(5));
-                    professor.setShow(cursor.getString(6));
-                    professor.setEmail(cursor.getString(cursor.getColumnIndex(DataBase.EMAIL)));
-                }
+                professor.setId(cursor.getInt(0));
+                professor.setNomeProfessor(cursor.getString(1));
+                professor.setMatricula(cursor.getString(2));
+                professor.setSenha(cursor.getString(3));
+                professor.setOnline(cursor.getString(4));
+                professor.setUriFoto(cursor.getString(5));
+                professor.setShow(cursor.getString(6));
+                professor.setEmail(cursor.getString(cursor.getColumnIndex(DataBase.EMAIL)));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return professor;
+    }
+    public Professor getProfessor(String where){
+        Professor professor = null;
+        Cursor cursor = db.rawQuery("select * from professor "+where+";",null);
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            do {
+                professor = new Professor();
+                professor.setId(cursor.getInt(0));
+                professor.setNomeProfessor(cursor.getString(1));
+                professor.setMatricula(cursor.getString(2));
+                professor.setSenha(cursor.getString(3));
+                professor.setOnline(cursor.getString(4));
+                professor.setUriFoto(cursor.getString(5));
+                professor.setShow(cursor.getString(6));
+                professor.setEmail(cursor.getString(cursor.getColumnIndex(DataBase.EMAIL)));
             }while (cursor.moveToNext());
         }
         cursor.close();

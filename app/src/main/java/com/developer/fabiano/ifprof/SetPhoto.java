@@ -3,8 +3,6 @@ package com.developer.fabiano.ifprof;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
@@ -14,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,9 +22,6 @@ import com.developer.fabiano.ifprof.adapters.ImageUtil;
 import com.developer.fabiano.ifprof.adapters.Repositorio;
 import com.developer.fabiano.ifprof.database.DataBase;
 import com.developer.fabiano.ifprof.model.Professor;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 
 public class SetPhoto extends AppCompatActivity {
@@ -44,7 +40,7 @@ public class SetPhoto extends AppCompatActivity {
     Bundle savedInstanceState;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_photo);
         tbSetPhoto = (Toolbar) findViewById(R.id.tbSetPhoto);
@@ -58,7 +54,7 @@ public class SetPhoto extends AppCompatActivity {
         btnExistente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentGalery();
+                intentGallery();
             }
         });
         try {
@@ -73,7 +69,7 @@ public class SetPhoto extends AppCompatActivity {
             ivSetPhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    intentGalery();
+                    intentGallery();
                 }
             });
         }catch (Exception e){}
@@ -105,19 +101,30 @@ public class SetPhoto extends AppCompatActivity {
                 SetPhoto.this.finish();
             }
         });
-        if (savedInstanceState != null){
-            pathImg = savedInstanceState.getString("image");
-            ivSetPhoto.setImageBitmap(ImageUtil.setPic(pathImg, ivSetPhoto.getWidth(), ivSetPhoto.getHeight()));
-            btnSetPhoto.setText(savedInstanceState.getString("button"));
-        }else if (getIntent().getStringExtra("image") != null && !getIntent().getStringExtra("image").equals("null")) {
-            pathImg = getIntent().getStringExtra("image");
-            Bitmap bitmap = ImageUtil.setPic(getIntent().getStringExtra("image"), ivSetPhoto.getWidth(), ivSetPhoto.getHeight());
-            if(bitmap != null){
-                ivSetPhoto.setImageBitmap(bitmap);
+        ivSetPhoto.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                String path = null;
+                try {
+                    path = savedInstanceState.getString("image");
+                }catch (NullPointerException e){}
+
+                if (path != null){
+                    pathImg = savedInstanceState.getString("image");
+                    ivSetPhoto.setImageBitmap(ImageUtil.setPic(pathImg, ivSetPhoto.getWidth(), ivSetPhoto.getHeight()));
+                    btnSetPhoto.setText(savedInstanceState.getString("button"));
+                }else if (getIntent().getStringExtra("image") != null && !getIntent().getStringExtra("image").equals("null")) {
+                    pathImg = getIntent().getStringExtra("image");
+                    Bitmap bitmap = ImageUtil.setPic(getIntent().getStringExtra("image"), ivSetPhoto.getWidth(), ivSetPhoto.getHeight());
+                    if(bitmap != null){
+                        ivSetPhoto.setImageBitmap(bitmap);
+                    }
+                    btnSetPhoto.setText("Feito");
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                }
+                ivSetPhoto.getViewTreeObserver().removeGlobalOnLayoutListener(this);
             }
-            btnSetPhoto.setText("Feito");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        });
     }
 
     @Override
@@ -127,7 +134,7 @@ public class SetPhoto extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-    public void intentGalery(){
+    public void intentGallery(){
         tipo = 0;
         startActivityForResult(Intent.createChooser(new Intent(Intent.ACTION_PICK).setType("image/*"), "Selecione uma imagem"), IMAGEM_INTERNA);
     }

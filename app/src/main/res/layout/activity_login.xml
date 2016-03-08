@@ -119,8 +119,17 @@
                         android:layout_width="wrap_content"
                         android:text="Salvar matrícula e senha"
                         >
-
                     </android.support.v7.widget.AppCompatCheckBox>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Esqueceu sua senha?"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/btnEsqueceuSenha"
+                        android:textColor="@color/redColor"
+                        android:background="@drawable/pressed_transparent"
+                        />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -145,7 +154,7 @@
                             <Button
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Não tem uma conta? click aqui!"
+                                android:text="Não tem uma conta? clique aqui!"
                                 android:id="@+id/btnCadastrar"
                                 android:shadowColor="@color/colorAccent"
                                 android:layout_marginTop="25dp"

@@ -40,12 +40,12 @@
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="false"
                 app:cardMaxElevation="3dp"
+                android:id="@+id/cdFirstScreen"
                 app:cardCornerRadius="3dp"
                 >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:orientation="vertical">
 
                     <TextView

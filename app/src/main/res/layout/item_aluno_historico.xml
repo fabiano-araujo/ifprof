@@ -42,22 +42,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Aulas ministradas: "
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Dia: "
+            android:textColor="@color/colorSecond"
             android:textSize="20sp"
             android:singleLine="true"
-            android:textColor="@color/colorSecond"
-            android:id="@+id/txtAulasAlHt"
+            android:id="@+id/txtDiaAlHt"
             />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Dia: "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Aulas ministradas: "
             android:textSize="19sp"
             android:singleLine="true"
-            android:id="@+id/txtDiaAlHt"
+            android:id="@+id/txtAulasAlHt"
             />
     </LinearLayout>
     <ImageView

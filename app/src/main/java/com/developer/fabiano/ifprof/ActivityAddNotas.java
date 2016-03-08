@@ -82,11 +82,19 @@ public class ActivityAddNotas extends AppCompatActivity {
         mList = repositorio.getAlunos(turma.getIdTurma());
 
         List<Nota> notaListSaved = repositorio.getNotas(allInfo.getAvaliacao().getIdAvaliacao(), turma.getIdTurma());
+        if (notaListSaved.size() == 0){
+            alunoSemNota = true;
+        }else{
+            if (notaListSaved.size() == mList.size()){
+                alunoSemNota = false;
+            }else{
+                alunoSemNota = true;
+            }
+        }
         for (int i = 0; i < notaListSaved.size(); i++) {
             for (int j = 0; j < mList.size(); j++) {
                 if (notaListSaved.get(i).getAluno().getIdALuno() == mList.get(j).getIdALuno()) {
                     mList.set(j, notaListSaved.get(i).getAluno());
-                    alunoSemNota = true;
                 }
             }
         }

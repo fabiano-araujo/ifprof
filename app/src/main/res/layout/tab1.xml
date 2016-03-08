@@ -40,7 +40,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/imMeuPerfil"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_person100"
+                        android:src="@drawable/ic_contact_icon"
                         android:maxHeight="@dimen/size_icon"
                         android:maxWidth="@dimen/size_icon"
                         android:adjustViewBounds="true"
@@ -66,7 +66,7 @@
                     android:layout_marginRight="10dp" >
 
                     <ImageView
-                        android:src="@drawable/ic_questao1000"
+                        android:src="@drawable/ic_question100"
                         android:id="@+id/ivProvas"
                         android:layout_width="match_parent"
                         android:maxHeight="@dimen/size_icon"
@@ -107,7 +107,7 @@
                         android:id="@+id/ivAvaliacoes"
                         android:maxHeight="@dimen/size_icon"
                         android:maxWidth="@dimen/size_icon"
-                        android:src="@drawable/ic_avaliacao100"
+                        android:src="@drawable/ic_avaliacao"
                         android:layout_gravity="center_horizontal"
                         android:adjustViewBounds="true" />
                     <TextView
@@ -131,7 +131,7 @@
                     android:layout_marginRight="10dp" >
 
                     <ImageView
-                        android:src="@drawable/ic_disciplina100"
+                        android:src="@drawable/ic_disciplina"
                         android:id="@+id/ivDisciplinas"
                         android:layout_width="match_parent"
                         android:maxHeight="@dimen/size_icon"

@@ -276,14 +276,15 @@ public class ShowQuestoes extends AppCompatActivity implements NavigationView.On
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putParcelableArrayList("mList", (ArrayList<Questao>) questaoList);
-
-        HashMap hashMap = adapterQuestoes.getQuestoes();
-        Iterator itt = hashMap.values().iterator();
-        List<Questao> questoes = new ArrayList<Questao>();
-        while (itt.hasNext()){
-            questoes.add((Questao)itt.next());
-        }
-        outState.putParcelableArrayList("selecionados", (ArrayList<Questao>) questoes);
+        try{
+            HashMap hashMap = adapterQuestoes.getQuestoes();
+            Iterator itt = hashMap.values().iterator();
+            List<Questao> questoes = new ArrayList<Questao>();
+            while (itt.hasNext()){
+                questoes.add((Questao)itt.next());
+            }
+            outState.putParcelableArrayList("selecionados", (ArrayList<Questao>) questoes);
+        }catch (Exception e){}
         super.onSaveInstanceState(outState);
     }
 

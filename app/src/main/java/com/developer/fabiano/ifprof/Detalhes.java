@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -114,28 +115,38 @@ public class Detalhes extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-        if (!avaliacao.getTipo().equalsIgnoreCase("prova") || prova.getAvaliacao().getQuestoes().size() == 0){
-            btnEnviar.setVisibility(View.GONE);
-        }
-        title = "Prova de " + prova.getDisciplina().getNomeDisciplina() + "-" + prova.getAvaliacao().getAssunto() + " para a turma " + prova.getAvaliacao().getTurma().getNomeTurma();
-        btnEnviar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    file = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/"+prova.getProfessor().getNomeProfessor()+"/"+prova.getDisciplina().getNomeDisciplina()+"/provas/"+prova.getAvaliacao().getAssunto()+"-"+prova.getAvaliacao().getTurma().getNomeTurma()+".pdf";
-                    File provaFile =  new File(file);
-                    if (provaFile.exists()){
-                        avisoSendEmail();
-                    }else{
-                        Progress criarProva = new Progress(Detalhes.this,prova,0);
-                        criarProva.execute();
-                    }
-                }catch (Exception e){
-                    AlertsAndControl.alert(Detalhes.this,"Desculpe ocorreu um erro, tente novamente!","Aviso");
-                    e.printStackTrace();
-                }
+        try{
+            if (!avaliacao.getTipo().equalsIgnoreCase("prova") || prova.getAvaliacao().getQuestoes().size() == 0){
+                btnEnviar.setVisibility(View.GONE);
             }
-        });
+            title = "Prova de " + prova.getDisciplina().getNomeDisciplina() + "-" + prova.getAvaliacao().getAssunto() + " para a turma " + prova.getAvaliacao().getTurma().getNomeTurma();
+            btnEnviar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        file = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/"+prova.getProfessor().getNomeProfessor()+"/"+prova.getDisciplina().getNomeDisciplina()+"/provas/"+prova.getAvaliacao().getAssunto()+"-"+prova.getAvaliacao().getTurma().getNomeTurma()+".pdf";
+                        File provaFile =  new File(file);
+                        if (provaFile.exists()){
+                            avisoSendEmail();
+                        }else{
+                            Progress criarProva = new Progress(Detalhes.this,prova,0);
+                            criarProva.execute();
+                        }
+                    }catch (Exception e){
+                        AlertsAndControl.alert(Detalhes.this,"Desculpe ocorreu um erro, tente novamente!","Aviso");
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }catch (Exception e){
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setMessage("Você excluiu as questões dessa prova!").setTitle("aviso").setPositiveButton("Continuar",null).setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Detalhes.this.finish();
+                }
+            }).show();
+        }
     }
     public void avisoSendEmail(){
         AlertDialog.Builder save = new AlertDialog.Builder(this);
@@ -177,5 +188,13 @@ public class Detalhes extends AppCompatActivity {
             AlertsAndControl.alert(this, "Desculpe ocorreu um erro, tente novamente!", "Aviso");
             e.printStackTrace();
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

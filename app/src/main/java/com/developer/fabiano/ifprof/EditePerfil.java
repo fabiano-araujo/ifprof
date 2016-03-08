@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -20,6 +21,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -66,7 +68,13 @@ public class EditePerfil extends AppCompatActivity {
         edtMatriculaProfessorEdite.setText(professorPerfil.getMatricula());
         edtEmail.setText(professorPerfil.getEmail());
         if (!professorPerfil.getUriFoto().equals("null")) {
-            ivEditePerfil.setImageBitmap(ImageUtil.setPic(professorPerfil.getUriFoto(), ivEditePerfil.getWidth(), ivEditePerfil.getHeight()));
+            ivEditePerfil.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    ivEditePerfil.setImageBitmap(ImageUtil.setPic(professorPerfil.getUriFoto(), ivEditePerfil.getWidth(), ivEditePerfil.getHeight()));
+                    ivEditePerfil.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                }
+            });
         }
         ivEditePerfil.setOnClickListener(new View.OnClickListener() {
             @Override

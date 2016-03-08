@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteException;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -15,9 +16,11 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,7 +53,6 @@ public class Perfil extends AppCompatActivity implements NavigationView.OnNaviga
     private TextView txtMatriculaPerfil;
     private ImageView ivPerfilCl;
     private ImageView ivNavigation;
-    int count = 0;
     private Repositorio repositorio;
     private LinearLayout llPerfilTurmas;
     private LinearLayout llPerfilDisciplinas;
@@ -166,21 +168,26 @@ public class Perfil extends AppCompatActivity implements NavigationView.OnNaviga
         if (getIntent().getBooleanExtra("EXIT", false)) {
             this.finish();
         }
-    }
-
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        if(!professorPerfil.getUriFoto().equals("null") && count == 0) {
-            count = 1;
-            Bitmap bitmap1 = ImageUtil.setPic(professorPerfil.getUriFoto(), ivNavigation.getWidth(), ivNavigation.getHeight());
-            Bitmap bitmap2 = ImageUtil.setPic(professorPerfil.getUriFoto(), ivPerfilCl.getWidth(), ivPerfilCl.getHeight());
-            if (bitmap1 != null && bitmap2 != null){
-                ivNavigation.setImageBitmap(bitmap1);
-                ivPerfilCl.setImageBitmap(bitmap2);
+        ivPerfilCl.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if(!professorPerfil.getUriFoto().equals("null")) {
+                    Bitmap bitmap1 = ImageUtil.setPic(professorPerfil.getUriFoto(), ivNavigation.getWidth(), ivNavigation.getHeight());
+                    Bitmap bitmap2 = ImageUtil.setPic(professorPerfil.getUriFoto(), ivPerfilCl.getWidth(), ivPerfilCl.getHeight());
+                    if (bitmap1 != null && bitmap2 != null){
+                        ivNavigation.setImageBitmap(bitmap1);
+                        ivPerfilCl.setImageBitmap(bitmap2);
+                    }else{
+                        collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.colorSecond));
+                    }
+                }else{
+                    collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.colorSecond));
+                }
+                ivPerfilCl.getViewTreeObserver().removeGlobalOnLayoutListener(this);
             }
-        }
+        });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

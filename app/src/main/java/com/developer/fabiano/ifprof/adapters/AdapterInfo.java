@@ -28,6 +28,7 @@ import com.developer.fabiano.ifprof.Detalhes;
 import com.developer.fabiano.ifprof.ActivityHistorico;
 import com.developer.fabiano.ifprof.R;
 import com.developer.fabiano.ifprof.SeeMore;
+import com.developer.fabiano.ifprof.ShowTurmas;
 import com.developer.fabiano.ifprof.VerAluno;
 import com.developer.fabiano.ifprof.database.DataBase;
 import com.developer.fabiano.ifprof.model.AllInfo;
@@ -213,54 +214,82 @@ public class AdapterInfo extends RecyclerView.Adapter<AdapterInfo.MyViewHolder> 
         }else if (tipo == SHOWTURMAS){
             final AllInfo allInfo = mList.get(position);
             myViewHolder.txtNome.setText(allInfo.getTurma().getNomeTurma());
-            myViewHolder.txtQtdAlunos.setText(allInfo.getQtdAlunos()+"");
-            myViewHolder.btnEditarTurma.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent it = new Intent(mContext, ActivityAddTurmas.class);
-                    it.putExtra("nomeTurma", myViewHolder.txtNome.getText());
-                    mContext.startActivity(it);
-                    ((Activity) mContext).finish();
-                }
-            });
-            List<Disciplina> minhasDiciplinas = allInfo.getDiciplinas();
-            String res ="";
-            if (minhasDiciplinas.size() == 0){
-                myViewHolder.txtInfo2More.setText("Nenhuma disciplina.");
-            }else{
-                for (int i = 0;i < minhasDiciplinas.size();i++){
-                    res += minhasDiciplinas.get(i).getNomeDisciplina()+", ";
-                }
-                myViewHolder.txtInfo2More.setText(res.substring(0,res.length()-2)+".");
-            }
-            myViewHolder.ivDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String mensage;
-                    if (allInfo.getQtdAlunos() == 0) {
-                        mensage = "Você tem ser certeza que deseja excluir essa turma?";
+            myViewHolder.txtQtdAlunos.setText(allInfo.getQtdAlunos() + "");
 
-                    } else {
-                        mensage = "Há alunos nessa turma, excluir mesmo assim?";
+
+            List<Disciplina> minhasDiciplinas = allInfo.getDiciplinas();
+            if (minhasDiciplinas != null){
+                myViewHolder.btnEditarTurma.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent it = new Intent(mContext, ActivityAddTurmas.class);
+                        it.putExtra("nomeTurma", myViewHolder.txtNome.getText());
+                        mContext.startActivity(it);
+                        ((Activity) mContext).finish();
                     }
-                    AlertDialog.Builder delete = new AlertDialog.Builder(mContext);
-                    delete.setTitle(allInfo.getTurma().getNomeTurma());
-                    delete.setMessage(mensage).setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            repositorio = new Repositorio(mContext);
-                            removeListItem(position);
-                            itemIgualsToZero();
-                            repositorio.delete(DataBase.TABLE_TURMA, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
-                            repositorio.delete(DataBase.TABLE_TURMA_DISCIPLINA, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
-                            repositorio.delete(DataBase.TABLE_FALTA, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
-                            repositorio.delete(DataBase.TABLE_AVALIACAO, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
-                            repositorio.delete(DataBase.TABLE_ALUNO, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
-                            repositorio.close();
-                        }
-                    }).setNegativeButton("Não", null).show();
+                });
+                String res ="";
+                if (minhasDiciplinas.size() == 0){
+                    myViewHolder.txtInfo2More.setText("Nenhuma disciplina.");
+                }else{
+                    for (int i = 0;i < minhasDiciplinas.size();i++){
+                        res += minhasDiciplinas.get(i).getNomeDisciplina()+", ";
+                    }
+                    myViewHolder.txtInfo2More.setText(res.substring(0,res.length()-2)+".");
                 }
-            });
+                myViewHolder.ivDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String mensage;
+                        if (allInfo.getQtdAlunos() == 0) {
+                            mensage = "Você tem ser certeza que deseja excluir essa turma?";
+
+                        } else {
+                            mensage = "Há alunos nessa turma, excluir mesmo assim?";
+                        }
+                        AlertDialog.Builder delete = new AlertDialog.Builder(mContext);
+                        delete.setTitle(allInfo.getTurma().getNomeTurma());
+                        delete.setMessage(mensage).setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                repositorio = new Repositorio(mContext);
+                                removeListItem(position);
+                                itemIgualsToZero();
+                                repositorio.delete(DataBase.TABLE_TURMA, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
+                                repositorio.delete(DataBase.TABLE_TURMA_DISCIPLINA, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
+                                repositorio.delete(DataBase.TABLE_FALTA, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
+                                repositorio.delete(DataBase.TABLE_AVALIACAO, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
+                                repositorio.delete(DataBase.TABLE_ALUNO, "where " + DataBase.ID_TURMA + " == " + allInfo.getTurma().getIdTurma());
+                                repositorio.close();
+                            }
+                        }).setNegativeButton("Não", null).show();
+                    }
+                });
+            }else{
+                myViewHolder.llDisciplinas.setVisibility(View.GONE);
+                myViewHolder.ivDelete.setVisibility(View.GONE);
+                myViewHolder.btnEditarTurma.setText("Adicionar");
+                repositorio = new Repositorio(mContext);
+                professorLogged = repositorio.getLogged();
+                repositorio.close();
+                myViewHolder.btnEditarTurma.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        repositorio = new Repositorio(mContext);
+                        allInfo.getTurma().setIdProfessor(professorLogged.getId());
+                        repositorio.insert(allInfo.getTurma());
+                        allInfo.setTurma(repositorio.getTurmas(professorLogged, "and " + DataBase.NOME_TURMA + " = '" + allInfo.getTurma().getNomeTurma()+"'").get(0));
+                        for (int i = 0; i < allInfo.getAlunos().size(); i++) {
+                            allInfo.getAlunos().get(i).setIdProfessor(professorLogged.getId());
+                            allInfo.getAlunos().get(i).setIdTurma(allInfo.getTurma().getIdTurma());
+                            repositorio.insert(allInfo.getAlunos().get(i),"");
+                        }
+                        repositorio.close();
+                        mContext.startActivity(new Intent(mContext, ShowTurmas.class));
+                        ((Activity)mContext).finish();
+                    }
+                });
+            }
             myViewHolder.btnSeeMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -474,6 +503,7 @@ public class AdapterInfo extends RecyclerView.Adapter<AdapterInfo.MyViewHolder> 
         public FrameLayout flSubTitle;
         public TextView txtDate;
         public View view;
+        public LinearLayout llDisciplinas;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -493,6 +523,7 @@ public class AdapterInfo extends RecyclerView.Adapter<AdapterInfo.MyViewHolder> 
                 txtInfo3More = (TextView)itemView.findViewById(R.id.txtInfo3More);
                 llMoreAvaliacoes = (LinearLayout)itemView.findViewById(R.id.llMoreAvalicoes);
                 flSubTitle = (FrameLayout)itemView.findViewById(R.id.flSubTitle);
+                llDisciplinas = (LinearLayout)itemView.findViewById(R.id.llDisciplinas);
                 txtDate = (TextView)itemView.findViewById(R.id.txtDate);
                 if (tipo != SHOWALUNOS){
                     tbItemInfo.setVisibility(View.GONE);
