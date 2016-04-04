@@ -126,8 +126,23 @@ public class Detalhes extends AppCompatActivity {
                     try {
                         file = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/"+prova.getProfessor().getNomeProfessor()+"/"+prova.getDisciplina().getNomeDisciplina()+"/provas/"+prova.getAvaliacao().getAssunto()+"-"+prova.getAvaliacao().getTurma().getNomeTurma()+".pdf";
                         File provaFile =  new File(file);
+
                         if (provaFile.exists()){
-                            avisoSendEmail();
+                            for (int i = 1;true; i++) {
+                                file = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/"+prova.getProfessor().getNomeProfessor()+"/"+prova.getDisciplina().getNomeDisciplina()+"/provas/"+prova.getAvaliacao().getAssunto()+"-"+prova.getAvaliacao().getTurma().getNomeTurma()+"("+i+").pdf";
+                                provaFile =  new File(file);
+                                if (provaFile.exists()){
+                                    continue;
+                                }
+                                if(i == 1){
+                                    file = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/"+prova.getProfessor().getNomeProfessor()+"/"+prova.getDisciplina().getNomeDisciplina()+"/provas/"+prova.getAvaliacao().getAssunto()+"-"+prova.getAvaliacao().getTurma().getNomeTurma()+".pdf";
+                                }else {
+                                    file = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/"+prova.getProfessor().getNomeProfessor()+"/"+prova.getDisciplina().getNomeDisciplina()+"/provas/"+prova.getAvaliacao().getAssunto()+"-"+prova.getAvaliacao().getTurma().getNomeTurma()+"("+(i-1)+").pdf";
+                                }
+
+                                avisoSendEmail();
+                                break;
+                            }
                         }else{
                             Progress criarProva = new Progress(Detalhes.this,prova,0);
                             criarProva.execute();

@@ -12,6 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtTitle"
+        android:textSize="@dimen/text_size"
+        android:gravity="center_vertical"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Turma"
         />
@@ -26,7 +28,7 @@
     </android.support.v7.widget.AppCompatSpinner>
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_conponentes"
         android:layout_weight="3"
         android:id="@+id/ivClose"
         android:src="@drawable/ic_close_red_24dp"/>

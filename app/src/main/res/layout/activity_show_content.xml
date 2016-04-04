@@ -89,9 +89,8 @@
             android:id="@+id/FABAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
             app:borderWidth="0dp"
-            android:layout_marginBottom="@dimen/margin_fab"
+            android:layout_margin="@dimen/margin_fab"
             app:layout_anchor="@id/rvShow"
             app:layout_behavior="com.developer.fabiano.ifprof.adapters.ScrollAwareFABBehavior"
             app:layout_anchorGravity="bottom|right|end"
@@ -180,7 +179,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-
         app:menu="@menu/drawer_item"
         />
 </android.support.v4.widget.DrawerLayout>

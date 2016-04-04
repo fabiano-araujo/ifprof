@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +14,8 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.developer.fabiano.ifprof.adapters.AdapterMenu;
 import com.developer.fabiano.ifprof.adapters.AlertsAndControl;
@@ -123,6 +126,20 @@ public class MenuMain extends AppCompatActivity implements SearchView.OnQueryTex
                 break;
             case R.id.action_search:
                 startActivity(new Intent(this,SearchableActivity.class));
+                break;
+            case R.id.sobre:
+                AlertDialog.Builder sobre = new AlertDialog.Builder(this);
+                View view = getLayoutInflater().inflate(R.layout.sobre,null);
+                TextView textView = (TextView) view.findViewById(R.id.txtF);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("https://github.com/fabiano-araujo"));
+                        startActivity(i);
+                    }
+                });
+                sobre.setView(view).setNeutralButton("Ok",null).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

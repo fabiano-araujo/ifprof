@@ -69,18 +69,20 @@
                 android:orientation="horizontal">
                 <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="45dp"
+                    android:layout_height="@dimen/height_conponentes"
                     android:text="Nova foto"
                     android:layout_marginBottom="20dp"
                     android:id="@+id/btnNewFoto"
+                    android:textSize="@dimen/text_size"
                     android:background="@drawable/pressed_transparent"
                     android:layout_gravity="center_horizontal"
                     android:textColor="@color/colorSecond" />
                 <Button
                     android:layout_marginLeft="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="45dp"
+                    android:layout_height="@dimen/height_conponentes"
                     android:text="Existente"
+                    android:textSize="@dimen/text_size"
                     android:layout_marginBottom="20dp"
                     android:id="@+id/btnExistente"
                     android:background="@drawable/pressed_transparent"
@@ -98,7 +100,8 @@
 
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     android:text="deixar padão"
                     android:id="@+id/btnSetPhoto"
                     android:background="@drawable/pressed_primary"

@@ -49,6 +49,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Alunos"
+                        android:textSize="@dimen/text_size"
                         android:textColor="@color/colorSecond"
                         android:id="@+id/textView5"
                         android:layout_gravity="center_horizontal" />
@@ -79,6 +80,7 @@
                         android:textColor="@color/colorSecond"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Turmas"
+                        android:textSize="@dimen/text_size"
                         android:id="@+id/textView3"
                         android:layout_gravity="center_horizontal" />
                 </LinearLayout>
@@ -117,6 +119,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Frequencia"
+                        android:textSize="@dimen/text_size"
                         android:textColor="@color/colorSecond"
                         android:id="@+id/textView6"
                         android:layout_gravity="center_horizontal" />
@@ -147,6 +150,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Notas"
+                        android:textSize="@dimen/text_size"
                         android:textColor="@color/colorSecond"
                         android:id="@+id/textView11"
                         android:layout_gravity="center_horizontal" />

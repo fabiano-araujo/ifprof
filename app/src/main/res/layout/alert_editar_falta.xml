@@ -14,11 +14,11 @@
         >
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/height_conponentes"
+            android:textSize="@dimen/text_size"
             android:hint="Aulas"
             android:inputType="number"
             android:id="@+id/edtAulasAlHt"
-            android:textSize="20sp"
             />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
@@ -30,7 +30,8 @@
         >
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/height_conponentes"
+            android:textSize="@dimen/text_size"
             android:hint="Faltas"
             android:inputType="number"
             android:id="@+id/edtFaltasAlHt"
@@ -46,7 +47,8 @@
         >
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/height_conponentes"
+            android:textSize="@dimen/text_size"
             android:hint="Dia"
             android:id="@+id/edtDiaAlHt"
             android:cursorVisible="false"

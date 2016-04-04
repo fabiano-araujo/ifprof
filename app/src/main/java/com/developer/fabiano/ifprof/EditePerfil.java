@@ -58,6 +58,7 @@ public class EditePerfil extends AppCompatActivity {
     private SwitchCompat strEditarSenha;
     private TextInputLayout iptEmail;
     private EditText edtEmail;
+    String nomeDiretorio = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,26 +114,26 @@ public class EditePerfil extends AppCompatActivity {
                             }else{
                                 iptSenhaAntiga.setErrorEnabled(false);
                                 if (AlertsAndControl.check(iptNovaSenha,edtNovaSenha,4,"No mínimo 4 dígitos!")){
-                                    String dados = "'" + professorPerfil.getUriFoto() + "' ," + DataBase.NOME_PROFESSOR + " = '" + nome + "', " + DataBase.MATRICULA_PROFESSOR + " = " + matricula+ " , " + DataBase.SENHA + " = '" + edtNovaSenha.getText().toString()+"', " + DataBase.EMAIL + " = '" + email+"'";
-                                    repositorio.update(DataBase.TABLE_PROFESSOR, DataBase.URIFOTO, dados, DataBase.ID_PROFESSOR, professorPerfil.getId(), "");
                                     try {
-                                        String nomeDiretorio = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/";
+                                        nomeDiretorio = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/";
                                         AlertsAndControl.renameFile(nomeDiretorio+professorPerfil.getNomeProfessor(),nomeDiretorio+nome);
                                     }catch (Exception e){
                                         e.printStackTrace();
                                     }
+                                    String dados = "'" + professorPerfil.getUriFoto() + "' ," + DataBase.NOME_PROFESSOR + " = '" + nome + "', " + DataBase.MATRICULA_PROFESSOR + " = " + matricula+ " , " + DataBase.SENHA + " = '" + edtNovaSenha.getText().toString()+"', " + DataBase.EMAIL + " = '" + email+"' ,"+DataBase.PATHIMAGE+" = '"+nomeDiretorio+nome+"'";
+                                    repositorio.update(DataBase.TABLE_PROFESSOR, DataBase.URIFOTO, dados, DataBase.ID_PROFESSOR, professorPerfil.getId(), "");
                                     backPerfil();
                                 }
                             }
                         }else{
-                            String dados = "'" + professorPerfil.getUriFoto() + "' ," + DataBase.NOME_PROFESSOR + " = '" + nome + "', " + DataBase.MATRICULA_PROFESSOR + " = " + matricula+" , "+ DataBase.EMAIL + " = '" + email+"'";
-                            repositorio.update(DataBase.TABLE_PROFESSOR, DataBase.URIFOTO, dados, DataBase.ID_PROFESSOR, professorPerfil.getId(), "");
                             try {
-                                String nomeDiretorio = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/";
+                                nomeDiretorio = Environment.getExternalStorageDirectory().getPath()+"/Ifprof/";
                                 AlertsAndControl.renameFile(nomeDiretorio+professorPerfil.getNomeProfessor(),nomeDiretorio+nome);
                             }catch (Exception e){
                                 e.printStackTrace();
                             }
+                            String dados = "'" + professorPerfil.getUriFoto() + "' ," + DataBase.NOME_PROFESSOR + " = '" + nome + "', " + DataBase.MATRICULA_PROFESSOR + " = " + matricula+" , "+ DataBase.EMAIL + " = '" + email+"'";
+                            repositorio.update(DataBase.TABLE_PROFESSOR, DataBase.URIFOTO, dados, DataBase.ID_PROFESSOR, professorPerfil.getId(), "");
                             backPerfil();
                         }
                         repositorio.close();

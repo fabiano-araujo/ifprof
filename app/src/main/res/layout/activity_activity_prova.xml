@@ -37,9 +37,10 @@
 
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/height_conponentes"
                     android:text="Gerar prova"
                     android:layout_marginTop="30dp"
+                    android:textSize="@dimen/text_size"
                     android:id="@+id/btnGerarProva"
                     android:background="@drawable/pressed_primary"
                     android:textColor="#fff"

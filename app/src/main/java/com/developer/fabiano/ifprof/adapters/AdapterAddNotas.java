@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.developer.fabiano.ifprof.ActivityAddNotas;
 import com.developer.fabiano.ifprof.R;
 import com.developer.fabiano.ifprof.database.DataBase;
 import com.developer.fabiano.ifprof.model.AllInfo;
@@ -45,6 +48,7 @@ public class AdapterAddNotas extends RecyclerView.Adapter<AdapterAddNotas.MyView
     private boolean showSave[];
     private boolean seleciionarAluno;
     private AllInfo allInfo;
+
     public AdapterAddNotas(Context c, List<Aluno> l,AllInfo allInfo,CoordinatorLayout coordinatorLayout,FloatingActionButton floatingActionButton,RecyclerView recyclerView,boolean seleciionarAluno){
         this.seleciionarAluno = seleciionarAluno;
         mList = l;
@@ -60,11 +64,18 @@ public class AdapterAddNotas extends RecyclerView.Adapter<AdapterAddNotas.MyView
         this.coordinatorLayout = coordinatorLayout;
         this.recyclerView = recyclerView;
         this.allInfo = allInfo;
+        int saves = 0;
         for (int i = 0; i <mList.size() ; i++) {
             if ( !mList.get(i).getNota().trim().equals("")){
                 somethingSaved = true;
-                break;
+                saves++;
             }
+        }
+
+        if (saves == mList.size()) {
+            try {
+                ActivityAddNotas.getMenuItem().setVisible(false);
+            } catch (Exception e) {}
         }
     }
     @Override
@@ -85,10 +96,7 @@ public class AdapterAddNotas extends RecyclerView.Adapter<AdapterAddNotas.MyView
             myViewHolder.edtNota.setVisibility(View.GONE);
             myViewHolder.txtNota.setText(mList.get(position).getNota());
             showSave[position] = true;
-            /*if (notSaved == false){
-                floatingActionButton.setVisibility(View.GONE);
-                coordinatorLayout.removeView(floatingActionButton);
-            }*/
+
         }
         if (somethingSaved && mList.get(position).getNota().trim().equals("")){
             myViewHolder.txtAlertNota.setVisibility(View.VISIBLE);
@@ -276,6 +284,7 @@ public class AdapterAddNotas extends RecyclerView.Adapter<AdapterAddNotas.MyView
             } else {
                 mList.get(position).setNota(charSequence.toString());
             }
+
         }
         @Override
         public void afterTextChanged(Editable editable) {

@@ -9,8 +9,10 @@
     <dimen name="image_apresentation2">500dp</dimen>
     <dimen name="icon_sem_dados">300dp</dimen>
     <dimen name="height_CollapsingToolbarLayout">600dp</dimen>
-    <dimen name="margin_fab">16dp</dimen>
-
-
+    <dimen name="margin_fab">24dp</dimen>
+    <dimen name="height_conponentes">55dp</dimen>
+    <dimen name="title_size">40sp</dimen>
     <dimen name="size_set_photo">500dp</dimen>
+    <dimen name="margin_button">34dp</dimen>
+    <dimen name="text_size">20sp</dimen>
 </resources>

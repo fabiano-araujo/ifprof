@@ -35,6 +35,8 @@
                     android:text="Informe todos os dados abaixo para recuperar sua senha."
                     android:textColor="@color/colorPrimary"
                     android:id="@+id/textView"
+                    android:layout_marginTop="@dimen/margin_button"
+                    android:textSize="@dimen/text_size"
                     android:gravity="center"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
@@ -45,7 +47,8 @@
                     <EditText
                         android:id="@+id/edtMatricula"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:paddingBottom="13dp"
                         android:paddingTop="13dp"
                         android:hint="Matrícula"
@@ -59,7 +62,8 @@
                     <EditText
                         android:id="@+id/edtQtdTurmas"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:paddingBottom="13dp"
                         android:paddingTop="13dp"
                         android:hint="Quantidades de turmas"
@@ -73,7 +77,8 @@
                     <EditText
                         android:id="@+id/edtQtdDisciplinas"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:paddingBottom="13dp"
                         android:paddingTop="13dp"
                         android:hint="Quantidades de disciplinas"
@@ -87,7 +92,8 @@
                         <EditText
                             android:id="@+id/edtNomeTurma"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
                             android:paddingBottom="13dp"
                             android:paddingTop="13dp"
                             android:hint="Nome de uma turma"
@@ -101,7 +107,8 @@
                     <EditText
                         android:id="@+id/edtNomeDisciplina"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:paddingBottom="13dp"
                         android:paddingTop="13dp"
                         android:hint="Nome de uma disciplina"
@@ -115,7 +122,8 @@
                     android:layout_weight="1">
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:text="Recuperar senha"
                         android:id="@+id/btnRecuperar"
                         android:shadowColor="@color/colorAccent"

@@ -3,9 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context="com.developer.fabiano.ifprof.ActivityAddFaltas">
     <android.support.design.widget.AppBarLayout
@@ -15,17 +13,8 @@
         android:elevation="3dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/tbAddFaltas"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:minHeight="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:theme="@style/TheToobar"
-            android:elevation="3dp"
-            >
-        </android.support.v7.widget.Toolbar>
-
+        <include layout="@layout/toolbar"
+            android:id="@+id/tbAddFaltas"/>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -42,9 +31,11 @@
                 >
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Turma"
+                    android:gravity="center_vertical"
                     android:id="@+id/textView7"
                     />
 
@@ -52,7 +43,8 @@
                     android:id="@+id/spnTurmasFaltas"
                     android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     >
 
                 </android.support.v7.widget.AppCompatSpinner>
@@ -65,7 +57,8 @@
                 <EditText
                     android:id="@+id/edtAulasMinis"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     android:paddingTop="10dp"
                     android:layout_weight="1"
                     android:inputType="number"
@@ -74,7 +67,8 @@
                 <EditText
                     android:id="@+id/edtDia"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     android:paddingTop="10dp"
                     android:layout_weight="1"
                     android:inputType="text"
@@ -111,8 +105,7 @@
         android:id="@+id/FABSendFaltas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="10dp"
+        android:layout_margin="@dimen/margin_fab"
         app:layout_anchor="@id/rvAddFaltas"
         app:layout_behavior="com.developer.fabiano.ifprof.adapters.ScrollAwareFABBehavior"
         app:layout_anchorGravity="bottom|right|end"

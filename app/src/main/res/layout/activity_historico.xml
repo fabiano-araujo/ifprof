@@ -3,9 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context=".ActivityHistorico">
     <android.support.design.widget.AppBarLayout
@@ -14,16 +12,8 @@
         android:id="@+id/appBar"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/tbHistorico"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:minHeight="?attr/actionBarSize"
-            android:fitsSystemWindows="true"
-            android:background="@color/colorPrimary"
-            app:theme="@style/TheToobar"
-            android:elevation="3dp"
-            />
+        <include layout="@layout/toolbar"
+            android:id="@+id/tbHistorico"/>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -36,8 +26,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Disciplina"
-                android:textSize="24dp"
-                android:layout_marginBottom="3dp"
+                android:textSize="@dimen/title_size"
                 android:textColor="@color/colorSecond"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="6dp"
@@ -48,25 +37,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/llTurma"
-                android:padding="3dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
                 >
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Turma"
                     android:layout_marginTop="0dp"
+                    android:gravity="center_vertical"
                     android:id="@+id/textView7"
                     />
 
                 <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spnTurmasHistorico"
                     android:layout_marginLeft="10dp"
+                    android:layout_height="@dimen/height_conponentes"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
                     >
                 </android.support.v7.widget.AppCompatSpinner>
             </LinearLayout>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Escolha um dia para ver o histórico"
+                android:id="@+id/txtDisciplinaAvaliacao"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size"
+                android:background="#fbf1efef"
+                android:padding="4dp"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,7 +85,8 @@
                     android:orientation="horizontal">
                     <RadioButton
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:text="Todos"
                         android:layout_weight="1"
                         android:layout_marginLeft="16dp"
@@ -90,14 +94,15 @@
                         android:id="@+id/rbTodos" />
                     <RadioButton
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:text="ultimo"
                         android:layout_weight="1"
                         android:layout_gravity="center_horizontal"
                         android:id="@+id/rbUltimo" />
                     <RadioButton
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
                         android:layout_gravity="right"
                         android:checked="true"
                         android:id="@+id/rbOutro" />
@@ -105,8 +110,8 @@
                 <Spinner
                     android:id="@+id/spnOutro"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
                     android:layout_weight="2"
+                    android:layout_height="@dimen/height_conponentes"
                     />
             </LinearLayout>
             <View
@@ -122,12 +127,12 @@
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/llNoData"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
-        <include layout="@layout/no_data"/>
-    </LinearLayout>
+        <include layout="@layout/no_data" />
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

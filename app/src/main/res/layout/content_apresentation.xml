@@ -40,17 +40,19 @@
         >
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/height_conponentes"
             android:layout_weight="1"
             android:textColor="@color/colorAccent"
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
             android:id="@+id/btnAnterior"
+            android:textSize="@dimen/text_size"
             android:background="@drawable/button_transparent"
             android:text="Anterior"/>
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/height_conponentes"
+            android:textSize="@dimen/text_size"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:layout_marginLeft="5dp"

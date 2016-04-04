@@ -21,6 +21,7 @@ import com.developer.fabiano.ifprof.model.AllInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by fabiano on 21/12/15.
@@ -68,7 +69,9 @@ public class TabAlunosDaTurma extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(getContext(), ActivityAddAlunos.class);
-                it.putExtra("position",mList.get(0).getTurma());
+                try {
+                    it.putExtra("position",mList.get(0).getTurma());
+                }catch (Exception e){}
                 startActivity(it);
                 ((Activity)getContext()).finish();
             }

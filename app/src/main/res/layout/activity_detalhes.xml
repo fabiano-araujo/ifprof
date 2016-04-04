@@ -47,18 +47,20 @@
                         android:layout_marginRight="16dp"
                         android:layout_height="match_parent"
                         >
-                        <FrameLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="24dp"
+                            android:orientation="horizontal"
                             >
                             <TextView
                                 android:id="@+id/txtAssuntoDt"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="title"
                                 android:textColor="@color/colorSecond"
-                                android:textSize="30sp"/>
+                                android:textSize="@dimen/title_size"/>
                             <TextView
                                 android:id="@+id/txtTipo"
                                 android:layout_width="wrap_content"
@@ -66,8 +68,8 @@
                                 android:text="tipo"
                                 android:layout_marginTop="7dp"
                                 android:layout_gravity="right"
-                                android:textSize="17sp"/>
-                        </FrameLayout>
+                                android:textSize="@dimen/text_size"/>
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -87,7 +89,7 @@
                                 android:text="valor"
                                 android:layout_marginBottom="24dp"
                                 android:layout_marginLeft="16dp"
-                                android:textSize="16sp"/>
+                                android:textSize="@dimen/text_size"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -100,7 +102,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="bimestre"
                                 android:layout_gravity="bottom"
-                                android:textSize="17sp"/>
+                                android:textSize="@dimen/text_size"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -112,7 +114,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Disciplina:"
                                     android:layout_gravity="bottom"
-                                    android:textSize="17sp"/>
+                                    android:textSize="@dimen/text_size"/>
                                 <TextView
                                     android:id="@+id/txtDisciplina"
                                     android:textColor="@color/colorSecond"
@@ -121,7 +123,7 @@
                                     android:text="Disciplina:"
                                     android:layout_marginLeft="16dp"
                                     android:layout_gravity="bottom"
-                                    android:textSize="17sp"/>
+                                    android:textSize="@dimen/text_size"/>
                             </LinearLayout>
                             <TextView
                                 android:id="@+id/txtData"
@@ -130,7 +132,7 @@
                                 android:text="data:"
                                 android:layout_marginTop="16dp"
                                 android:layout_gravity="right"
-                                android:textSize="17sp"/>
+                                android:textSize="@dimen/text_size"/>
                         </LinearLayout>
                         <View
                             android:layout_width="match_parent"
@@ -145,7 +147,7 @@
                             android:text="Turma"
                             android:layout_marginTop="24dp"
                             android:textColor="@color/colorSecond"
-                            android:textSize="30sp"/>
+                            android:textSize="@dimen/title_size"/>
                         <LinearLayout
                             android:id="@+id/llTurmasDetalhes"
                             android:layout_width="match_parent"
@@ -161,7 +163,8 @@
                             android:id="@+id/btnEnviar"
                             android:textColor="@color/colorSecond"
                             android:background="@drawable/pressed_transparent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_marginTop="30dp"
@@ -174,7 +177,8 @@
                                 android:id="@+id/btnEditar"
                                 android:textColor="@color/colorAccent"
                                 android:background="@drawable/pressed_primary"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="@dimen/height_conponentes"
+                                android:textSize="@dimen/text_size"/>
                         </LinearLayout>
 
                     </LinearLayout>

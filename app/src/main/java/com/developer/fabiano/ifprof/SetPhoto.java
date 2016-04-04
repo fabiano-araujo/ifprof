@@ -38,7 +38,7 @@ public class SetPhoto extends AppCompatActivity {
     boolean showed = false;
     String pathImg;
     Bundle savedInstanceState;
-
+    boolean voltar = true;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +57,10 @@ public class SetPhoto extends AppCompatActivity {
                 intentGallery();
             }
         });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getIntent().getStringExtra("voltar") != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
         try {
             btnNewFoto.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,10 +81,7 @@ public class SetPhoto extends AppCompatActivity {
             repositorio = new Repositorio(SetPhoto.this);
             professor = repositorio.getLogged();
             repositorio.close();
-        }catch (Exception e){
-            AlertDialog.Builder x = new AlertDialog.Builder(SetPhoto.this);
-            x.setMessage(e.getMessage()).setNeutralButton("ok",null).show();
-        }
+        }catch (Exception e){}
         btnSetPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -56,6 +56,7 @@
                             android:text="Bem-vindo!"
                             android:textColor="@color/colorPrimary"
                             android:id="@+id/textView"
+                            android:textSize="@dimen/title_size"
                             android:layout_gravity="center_horizontal"
                             android:layout_centerVertical="true"
                             android:layout_centerHorizontal="true" />
@@ -68,10 +69,11 @@
                         <EditText
                             android:id="@+id/edtMatricula"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/height_conponentes"
                             android:paddingBottom="13dp"
-                            android:paddingTop="13dp"
+                            android:paddingTop="10dp"
                             android:hint="Matrícula"
+                            android:textSize="@dimen/text_size"
                             android:inputType="number" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -89,10 +91,11 @@
                             <EditText
                                 android:id="@+id/edtSenha"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/height_conponentes"
                                 android:paddingBottom="13dp"
                                 android:paddingTop="13dp"
                                 android:hint="senha"
+                                android:textSize="@dimen/text_size"
                                 android:inputType="textPassword" />
                         </android.support.design.widget.TextInputLayout>
 
@@ -113,23 +116,14 @@
                     </LinearLayout>
                     <android.support.v7.widget.AppCompatCheckBox
                         android:id="@+id/cbSaveLogin"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:layout_marginTop="@dimen/margin_button"
                         android:checked="true"
+                        android:textSize="@dimen/text_size"
                         android:layout_width="wrap_content"
                         android:text="Salvar matrícula e senha"
                         >
                     </android.support.v7.widget.AppCompatCheckBox>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Esqueceu sua senha?"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/btnEsqueceuSenha"
-                        android:textColor="@color/redColor"
-                        android:background="@drawable/pressed_transparent"
-                        />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -139,26 +133,41 @@
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
+                            android:layout_gravity="center_vertical"
+
                             android:layout_marginTop="20dp"
                             android:layout_marginBottom="30dp"
                             >
                             <Button
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/height_conponentes"
                                 android:text="Entrar"
                                 android:id="@+id/btnEntrar"
                                 android:textColor="@color/colorAccent"
+                                android:textSize="@dimen/text_size"
                                 android:background="@drawable/pressed_primary"
                                 />
                             <Button
                                 android:layout_width="match_parent"
+                                android:textSize="@dimen/text_size"
                                 android:layout_height="wrap_content"
-                                android:text="Não tem uma conta? clique aqui!"
+                                android:text="Não tem uma conta?"
                                 android:id="@+id/btnCadastrar"
                                 android:shadowColor="@color/colorAccent"
-                                android:layout_marginTop="25dp"
+                                android:layout_marginTop="@dimen/margin_button"
                                 android:textColor="@color/colorPrimary"
+                                android:background="@drawable/pressed_transparent"
+                                />
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Esqueceu sua senha?"
+                                android:layout_marginTop="@dimen/margin_button"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="left|center_vertical"
+                                android:id="@+id/btnEsqueceuSenha"
+                                android:textSize="@dimen/text_size"
+                                android:textColor="@color/redColor"
                                 android:background="@drawable/pressed_transparent"
                                 />
                         </LinearLayout>

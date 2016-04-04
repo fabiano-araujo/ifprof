@@ -504,10 +504,10 @@ public class AlertsAndControl {
         for (int i = 0; i <questaoList.size(); i++) {
             Questao questao = questaoList.get(i);
 
-            res += questao.getAlternativaCorreta().substring(1,2)+",,"+questao.getValor()+";;";
+            res += questao.getAlternativaCorreta().substring(1,2)+","+questao.getValor()+";";
         }
-        String info = prova.getAvaliacao().getIdAvaliacao()+"##";
-        String mais = "##"+prova.getDisciplina().getNomeDisciplina()+"##"+prova.getAvaliacao().getTurma().getNomeTurma()+"##"+prova.getCode();
+        String info = prova.getAvaliacao().getIdAvaliacao()+"#";
+        String mais = "#"+prova.getDisciplina().getNomeDisciplina()+"#"+prova.getAvaliacao().getTurma().getNomeTurma()+"#"+prova.getCode();
         ByteArrayOutputStream out = QRCode.from("!!>.<!!"+crip(info+res+mais)).to(ImageType.JPG).withSize(100,100).stream();
 
 
@@ -520,15 +520,15 @@ public class AlertsAndControl {
             if (string.length() > 0){
                 if (string.substring(0,7).equals("!!>.<!!")){
                     string = crip(string.substring(7,string.length()));
-                    String parteObjs[] = string.split("##");
+                    String parteObjs[] = string.split("#");
 
                     Avaliacao avaliacao = new Avaliacao();
                     avaliacao.setIdAvaliacao(Integer.parseInt(parteObjs[0]));
 
-                    String questoes[] = parteObjs[1].split(";;");
+                    String questoes[] = parteObjs[1].split(";");
                     List<Questao> questaoList = new ArrayList<>();
                     for (int i = 0; i < questoes.length; i++) {
-                        String parteQuestoes[] = questoes[i].split(",,");
+                        String parteQuestoes[] = questoes[i].split(",");
                         Questao questao = new Questao();
                         questao.setAlternativaCorreta(parteQuestoes[0]);
                         questao.setValor(parteQuestoes[1]);
@@ -552,7 +552,7 @@ public class AlertsAndControl {
                     alternativas.setMessage("Escolha uma opção de correção:").setPositiveButton("Ler gabarito", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
+                            alert(context,"Desculpe, mas essa função ainda não está disponivel!","Aviso");
                         }
                     }).setNegativeButton("Manual", new DialogInterface.OnClickListener() {
                         @Override

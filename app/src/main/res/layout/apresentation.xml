@@ -15,11 +15,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bem-vindo ao Ifpro!"
+                android:text="Bem-vindo ao Ifprof!"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/colorAccent"
-                android:textSize="24sp"
+                android:textSize="@dimen/title_size"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 >
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/image_apresentation1"
                     android:src="@drawable/aprasentation_info"/>
             </LinearLayout>
             <LinearLayout
@@ -47,7 +47,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorAccent"
-                        android:textSize="27sp"
+                        android:textSize="@dimen/title_size"
                         android:gravity="center_horizontal"
                         android:layout_gravity="center_vertical"
                         android:text="O que é?"/>
@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorAccent"
                         android:layout_marginTop="10dp"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/text_size"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_horizontal"
                         android:text="        Ifprof é um gerenciador de tarefas escolares, destinado ao uso de professores."/>

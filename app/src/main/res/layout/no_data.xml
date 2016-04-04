@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:text="mensage"
             android:gravity="center_horizontal"
-            android:textSize="19sp"
+            android:textSize="@dimen/text_size"
             />
     </LinearLayout>
 </LinearLayout>

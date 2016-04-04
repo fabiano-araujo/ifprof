@@ -18,7 +18,7 @@
                 >
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/image_apresentation2"
                     android:src="@drawable/oquefazer"/>
             </LinearLayout>
             <LinearLayout
@@ -37,7 +37,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorAccent"
-                        android:textSize="27sp"
+                        android:textSize="@dimen/title_size"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_horizontal"
                         android:text="O que fazer?"/>
@@ -45,7 +45,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorAccent"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/text_size"
                         android:gravity="center_horizontal"
                         android:layout_marginTop="16dp"
                         android:layout_gravity="center_vertical"

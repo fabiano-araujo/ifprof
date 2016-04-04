@@ -15,4 +15,8 @@
     <dimen name="icon_sem_dados">200dp</dimen>
     <dimen name="margin_fab">16dp</dimen>
     <dimen name="size_set_photo">350dp</dimen>
+    <dimen name="title_size">24sp</dimen>
+    <dimen name="text_size">15sp</dimen>
+    <dimen name="margin_button">12dp</dimen>
+    <dimen name="height_conponentes">46dp</dimen>
 </resources>

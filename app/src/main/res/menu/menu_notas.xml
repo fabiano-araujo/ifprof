@@ -1,6 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".ActivityAddNotas">
+    <item android:id="@+id/itmNotas" android:title="Salvar"
+        android:icon="@drawable/ic_check_white_24dp"
+        android:orderInCategory="100" app:showAsAction="always" />
     <item android:id="@+id/itmLerQrCode" android:title="Ler QRcode"
         android:icon="@drawable/ic_qrcode"
         android:orderInCategory="100" app:showAsAction="always" />

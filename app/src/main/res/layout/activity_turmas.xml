@@ -35,7 +35,8 @@
                 <EditText
                     android:id="@+id/edtNomeTurma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     android:paddingBottom="13dp"
                     android:inputType="text"
                     android:paddingTop="13dp"
@@ -51,8 +52,9 @@
 
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/height_conponentes"
                     android:text="Adicionar"
+                    android:textSize="@dimen/text_size"
                     android:layout_marginTop="30dp"
                     android:id="@+id/btnAddTurma"
                     android:layout_gravity="center_horizontal|bottom"

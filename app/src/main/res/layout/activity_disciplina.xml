@@ -41,7 +41,8 @@
                     <EditText
                         android:id="@+id/edtNomeDisciplina"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:inputType="text"
                         android:hint="Nome da disciplina"/>
                 </android.support.design.widget.TextInputLayout>
@@ -55,7 +56,8 @@
                 </LinearLayout>
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     android:text="Mais uma turma"
                     android:layout_marginTop="70dp"
                     android:id="@+id/btnOutraTurma"
@@ -72,7 +74,8 @@
                     android:layout_marginRight="2dp">
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:text="Adicionar"
                         android:id="@+id/btnAddDisciplina"
                         android:layout_gravity="center_vertical"

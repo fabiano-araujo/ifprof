@@ -202,7 +202,7 @@ public class ActivityAddDisciplinas extends AppCompatActivity {
                 }
             }
         });
-        edtNomeDisciplina.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
+        edtNomeDisciplina.setFilters(new InputFilter[]{new InputFilter.LengthFilter(35)});
     }
     public AppCompatSpinner createSpinner(int position,boolean closeVisible){
         final View view = getLayoutInflater().inflate(R.layout.add_item,null);

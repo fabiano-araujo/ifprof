@@ -27,8 +27,6 @@ import com.developer.fabiano.ifprof.model.Turma;
 import java.util.List;
 
 public class ActivityAddAlunos extends AppCompatActivity {
-    private NavigationView navigationView;
-    private ImageView ivHeader;
     private Toolbar tbAlunoCd;
     private Button btnAddAluno;
     private EditText edtNomeAluno;

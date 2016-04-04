@@ -14,11 +14,11 @@
         >
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/height_conponentes"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:id="@+id/edtOutroEmail"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size"
             />
     </android.support.design.widget.TextInputLayout>
 </LinearLayout>

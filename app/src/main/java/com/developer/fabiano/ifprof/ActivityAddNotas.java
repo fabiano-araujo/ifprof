@@ -53,6 +53,7 @@ public class ActivityAddNotas extends AppCompatActivity {
     String stringQrcode;
     boolean alunoSemNota = false;
     private MenuItem itemSave;
+    private static MenuItem itemNota;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +101,7 @@ public class ActivityAddNotas extends AppCompatActivity {
         }
         if (!alunoSemNota){
             cdlAddNotas.removeView(FABSendNotas);
+
         }
         final LinearLayout llSemAluno = (LinearLayout)findViewById(R.id.llSemAluno);
         if (mList.size() == 0){
@@ -123,24 +125,7 @@ public class ActivityAddNotas extends AppCompatActivity {
         FABSendNotas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mList = adapterAddNotas.getItems();
-                for (int i = 0; i < mList.size(); i++) {
-                    if (mList.get(i).getNota().trim().equals("")) {
-                        empty = true;
-                        break;
-                    }
-                }
-                if (adapterAddNotas.newAluno()) {
-                    AlertDialog.Builder screen = new AlertDialog.Builder(ActivityAddNotas.this);
-                    screen.setMessage("Apenas os alunos novos serão salvos!").setNeutralButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            empty();
-                        }
-                    }).show();
-                } else {
-                    empty();
-                }
+                clickSave();
             }
         });
         rvAddNotas.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -183,6 +168,26 @@ public class ActivityAddNotas extends AppCompatActivity {
             saveNotas();
         }
     }
+    public void clickSave(){
+        mList = adapterAddNotas.getItems();
+        for (int i = 0; i < mList.size(); i++) {
+            if (mList.get(i).getNota().trim().equals("")) {
+                empty = true;
+                break;
+            }
+        }
+        if (adapterAddNotas.newAluno()) {
+            AlertDialog.Builder screen = new AlertDialog.Builder(ActivityAddNotas.this);
+            screen.setMessage("Apenas os alunos novos serão salvos!").setNeutralButton("ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    empty();
+                }
+            }).show();
+        } else {
+            empty();
+        }
+    }
     public void saveNotas(){
         List<Nota> notaList = new ArrayList<Nota>();
         for (int i = 0; i < mList.size();i++) {
@@ -219,7 +224,7 @@ public class ActivityAddNotas extends AppCompatActivity {
                 adapterAddNotas = new AdapterAddNotas(ActivityAddNotas.this, mList, allInfo, cdlAddNotas, FABSendNotas,rvAddNotas,false);
                 rvAddNotas.setAdapter(adapterAddNotas);
             }else{
-                AlertsAndControl.alert(this,"Todos os registros foram salvos com sucesso!","Salvos");
+                AlertsAndControl.snackBar(cdlAddNotas, "Todos os registros foram salvos com sucesso!");
                 mList.clear();
                 List<Nota> notas = repositorio.getNotas(allInfo.getAvaliacao().getIdAvaliacao(),turma.getIdTurma());
 
@@ -230,6 +235,7 @@ public class ActivityAddNotas extends AppCompatActivity {
                 rvAddNotas.setAdapter(adapterAddNotas);
                 cdlAddNotas.removeView(FABSendNotas);
                 alunoSemNota = false;
+                itemNota.setVisible(false);
             }
             repositorio.close();
         }catch (SQLiteException e){
@@ -247,12 +253,19 @@ public class ActivityAddNotas extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_notas, menu);
         itemSave = menu.findItem(R.id.itmSalvar);
+        itemNota = menu.findItem(R.id.itmNotas);
+        if (!alunoSemNota){
+            itemNota.setVisible(false);
+
+        }
         if(mList.size() == 0){
             itemSave.setVisible(false);
         }
         return true;
     }
-
+    public static MenuItem getMenuItem(){
+        return itemNota;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -276,6 +289,9 @@ public class ActivityAddNotas extends AppCompatActivity {
                 }else{
                     AlertsAndControl.alert(this,"Ainda há alunos sem nota!","Aviso");
                 }
+                break;
+            case R.id.itmNotas:
+                clickSave();
                 break;
         }
         return super.onOptionsItemSelected(item);

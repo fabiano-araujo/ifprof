@@ -13,6 +13,7 @@ import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -68,7 +69,9 @@ public class Cadastro extends AppCompatActivity {
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("EXIT", true);
                             startActivity(intent);
-                            startActivity(new Intent(Cadastro.this, SetPhoto.class));
+                            Intent it = new Intent(Cadastro.this, SetPhoto.class);
+                            it.putExtra("voltar","false");
+                            startActivity(it);
                             Cadastro.this.finish();
                         } else {
                             snackbar("A matrícula " + professor.getMatricula() + " Já existe!");
@@ -122,6 +125,14 @@ public class Cadastro extends AppCompatActivity {
         edtNomeProfessorCd.setFilters(new InputFilter[]{new InputFilter.LengthFilter(30)});
         edtMatriculaCd.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
         edtSenha.setFilters(new InputFilter[]{new InputFilter.LengthFilter(25)});
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
     public void instance(){
         llMainCadastro = (LinearLayout)findViewById(R.id.llMainCadastro);

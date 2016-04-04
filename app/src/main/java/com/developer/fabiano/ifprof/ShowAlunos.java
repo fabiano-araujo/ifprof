@@ -47,7 +47,7 @@ public class ShowAlunos extends AppCompatActivity implements NavigationView.OnNa
     List<Turma> turmaList;
     private CoordinatorLayout cdlSnack;
     private LinearLayout llSemTurma;
-    private View viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

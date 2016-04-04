@@ -19,8 +19,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
+                    android:layout_height="@dimen/image_apresentation3"
                     android:src="@drawable/send_to_email"/>
             </LinearLayout>
             <LinearLayout
@@ -39,7 +38,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorAccent"
-                        android:textSize="30sp"
+                        android:textSize="@dimen/title_size"
                         android:gravity="center_horizontal"
                         android:layout_gravity="center_vertical"
                         android:text="Praticidade"/>
@@ -48,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorAccent"
                         android:gravity="center_horizontal"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/text_size"
                         android:layout_marginTop="10dp"
                         android:layout_gravity="center_vertical"
                         android:text="Crie e envie suas provas e lista de chamada para seu email."/>

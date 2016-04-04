@@ -11,14 +11,14 @@
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <include layout="@layout/toolbar"
-            android:id="@+id/tbAlunoHistorico"
-            app:layout_scrollFlags="scroll|enterAlways"/>
+            android:id="@+id/tbAlunoHistorico" />
         <LinearLayout
             android:orientation="vertical"
             app:layout_scrollFlags="enterAlways"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme"
+
             android:background="@color/windowBackground"
             >
             <TextView
@@ -28,7 +28,7 @@
                 android:text="Histórico de ..."
                 android:singleLine="true"
                 android:textColor="@color/colorSecond"
-                android:textSize="24sp"
+                android:textSize="@dimen/title_size"
                 android:layout_marginTop="16dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/txtMateriaHistorico"
@@ -46,7 +46,6 @@
                     android:text="Total de faltas: "
                     android:layout_marginLeft="16dp"
                     android:singleLine="true"
-                    android:textSize="15sp"
                     android:layout_gravity="center_horizontal"
                     android:id="@+id/txtAlHtFaltas"
                     />
@@ -58,52 +57,60 @@
                     android:layout_marginRight="16dp"
                     android:singleLine="true"
                     android:layout_marginLeft="16dp"
-                    android:textSize="15sp"
                     android:id="@+id/txtAlHtAulas"
                     />
             </LinearLayout>
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                >
+                android:background="#fbf1efef"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="6dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="nome"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="16dp"
+                        android:singleLine="true"
+                        android:textSize="@dimen/text_size"
+                        android:layout_gravity="right"
+                        android:textColor="@color/colorSecond"
+                        android:id="@+id/txtAlHtNome"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="turma"
+                        android:layout_marginRight="24dp"
+                        android:singleLine="true"
+                        android:layout_gravity="right"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="6dp"
+                        android:id="@+id/txtAlHtTurma"
+                        />
+                </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="nome"
-                    android:layout_marginLeft="16dp"
+                    android:text="matricula"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="22dp"
                     android:singleLine="true"
-                    android:textSize="19sp"
-                    android:layout_gravity="left"
-                    android:textColor="@color/colorSecond"
-                    android:id="@+id/txtAlHtNome"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="turma"
-                    android:layout_marginRight="24dp"
-                    android:singleLine="true"
-                    android:layout_gravity="right"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/text_size"
                     android:layout_marginBottom="6dp"
-                    android:id="@+id/txtAlHtTurma"
+                    android:id="@+id/txtAlHtMatricula"
                     />
-            </FrameLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="matricula"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="22dp"
-                android:singleLine="true"
-                android:textSize="14sp"
-                android:layout_marginBottom="6dp"
-                android:id="@+id/txtAlHtMatricula"
-                />
+            </LinearLayout>
+
         </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>

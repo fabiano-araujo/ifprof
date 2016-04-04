@@ -378,7 +378,8 @@ public class AdapterInfo extends RecyclerView.Adapter<AdapterInfo.MyViewHolder> 
                                     repositorio = new Repositorio(mContext);
                                     removeListItem(position);
                                     itemIgualsToZero();
-                                    repositorio.delete(DataBase.TABLE_ALUNO, " where " + DataBase.NOME_ALUNO + " == '" + aluno.getNomeAluno() + "' and " + DataBase.ID_PROFESSOR + " == " + professorLogged.getId());
+                                    repositorio.delete(DataBase.TABLE_ALUNO, " where " + DataBase.MATRICULA_ALUNO + " == '" + aluno.getMatriculaAluno() + "' and " + DataBase.ID_PROFESSOR + " == " + professorLogged.getId());
+                                    repositorio.delete(DataBase.TABLE_FALTA, " where " + DataBase.ID_ALUNO + " == '" + aluno.getIdALuno() + "' and " + DataBase.ID_PROFESSOR + " == " + professorLogged.getId());
                                     repositorio.close();
                                 }
                             }).setNegativeButton("Não", null).show();

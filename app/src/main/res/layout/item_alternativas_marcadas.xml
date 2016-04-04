@@ -1,78 +1,83 @@
 <LinearLayout
-    android:orientation="vertical"
-    android:layout_marginTop="13dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="6dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="01. Pergunta"
-        android:textSize="20sp"
-        android:textColor="@color/colorSecond"
-        android:singleLine="true"
-        android:id="@+id/txtPergunta"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="(valor)"
-        android:textSize="20sp"
-        android:layout_marginLeft="20dp"
-        android:textColor="@color/colorSecond"
-        android:singleLine="true"
-        android:id="@+id/txtValor"/>
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:id="@+id/rgAlternativas"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="13dp"
         android:layout_marginLeft="16dp"
-        android:layout_height="wrap_content">
-        <RadioButton
+        android:layout_marginRight="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" a) Alternativa A"
-            android:layout_marginTop="6dp"
-            android:textSize="18sp"
-            android:checked="true"
+            android:text="01. Pergunta"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/colorSecond"
             android:singleLine="true"
-            android:id="@+id/rbA"
-            />
-        <RadioButton
+            android:id="@+id/txtPergunta"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" b) Alternativa B"
-            android:layout_marginTop="6dp"
-            android:textSize="18sp"
+            android:text="(valor)"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorSecond"
             android:singleLine="true"
-            android:id="@+id/rbB"
-            />
-        <RadioButton
+            android:id="@+id/txtValor"/>
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" c) Alternativa C"
-            android:textSize="18sp"
-            android:singleLine="true"
-            android:layout_marginTop="6dp"
-            android:id="@+id/rbC"
-            />
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" d) Alternativa D"
-            android:textSize="18sp"
-            android:singleLine="true"
-            android:layout_marginTop="6dp"
-            android:id="@+id/rbD"
-            />
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" e) Alternativa E"
-            android:layout_marginTop="6dp"
-            android:textSize="18sp"
-            android:singleLine="true"
-            android:id="@+id/rbE"
-            />
-    </RadioGroup>
+            android:id="@+id/rgAlternativas"
+            android:layout_marginLeft="16dp"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" a) Alternativa A"
+                android:layout_marginTop="6dp"
+                android:textSize="@dimen/text_size"
+                android:checked="true"
+                android:singleLine="true"
+                android:id="@+id/rbA"
+                />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" b) Alternativa B"
+                android:layout_marginTop="6dp"
+                android:textSize="@dimen/text_size"
+                android:singleLine="true"
+                android:id="@+id/rbB"
+                />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" c) Alternativa C"
+                android:textSize="@dimen/text_size"
+                android:singleLine="true"
+                android:layout_marginTop="6dp"
+                android:id="@+id/rbC"
+                />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" d) Alternativa D"
+                android:textSize="@dimen/text_size"
+                android:singleLine="true"
+                android:layout_marginTop="6dp"
+                android:id="@+id/rbD"
+                />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" e) Alternativa E"
+                android:layout_marginTop="6dp"
+                android:textSize="@dimen/text_size"
+                android:singleLine="true"
+                android:id="@+id/rbE"
+                />
+        </RadioGroup>
+    </LinearLayout>
 </LinearLayout>

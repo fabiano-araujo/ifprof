@@ -151,7 +151,8 @@ public class ShowTurmas extends AppCompatActivity implements NavigationView.OnNa
         FABAddTurma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (llFabs.getVisibility() == View.GONE){
+                /*
+                  if (llFabs.getVisibility() == View.GONE){
                     llFabs.setVisibility(View.VISIBLE);
                     llFabs.startAnimation(animation);
                     CoordinatorLayout.LayoutParams params =
@@ -169,6 +170,11 @@ public class ShowTurmas extends AppCompatActivity implements NavigationView.OnNa
                     FABAddTurma.startAnimation(rotation);
                     FABAddTurma.setImageResource(R.drawable.ic_add_white_24dp);
                 }
+                 */
+                startActivity(new Intent(ShowTurmas.this, ActivityAddTurmas.class));
+                ShowTurmas.this.finish();
+                llFabs.setVisibility(View.GONE);
+                FABAddTurma.setImageResource(R.drawable.ic_add_white_24dp);
             }
         });
         rvTurmas.setOnClickListener(new View.OnClickListener() {

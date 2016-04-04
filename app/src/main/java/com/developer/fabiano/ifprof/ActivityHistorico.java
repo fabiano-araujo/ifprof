@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -55,7 +56,7 @@ public class ActivityHistorico extends AppCompatActivity {
     private MenuItem item;
     private LinearLayout llOptions;
     private TextView txtMensage;
-    private LinearLayout llNoData;
+    private ScrollView llNoData;
     private LinearLayout llTurma;
     private View optionSave;
     private Turma turma = new Turma();
@@ -255,25 +256,27 @@ public class ActivityHistorico extends AppCompatActivity {
             rvHistorico.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
-                    if (faltasAdapter.getItemCount() == 0){
-                        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) tbHistorico.getLayoutParams();
-                        params.setScrollFlags(0);
-                        llNoData.setVisibility(View.VISIBLE);
-                        rvHistorico.setVisibility(View.GONE);
-                    }else{
-                        float heightView = rvHistorico.getChildAt(0).getHeight()*historico.getFaltaList().size();
-                        Display display = getWindowManager().getDefaultDisplay();
-                        int screenHeight = display.getHeight()- tbHistorico.getHeight();
-                        if (heightView < screenHeight){
+                    try{
+                        if (faltasAdapter.getItemCount() == 0){
                             AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) tbHistorico.getLayoutParams();
                             params.setScrollFlags(0);
+                            llNoData.setVisibility(View.VISIBLE);
+                            rvHistorico.setVisibility(View.GONE);
                         }else{
-                            AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) tbHistorico.getLayoutParams();
-                            params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+                            float heightView = rvHistorico.getChildAt(0).getHeight()*historico.getFaltaList().size();
+                            Display display = getWindowManager().getDefaultDisplay();
+                            int screenHeight = display.getHeight()- tbHistorico.getHeight();
+                            if (heightView < screenHeight){
+                                AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) tbHistorico.getLayoutParams();
+                                params.setScrollFlags(0);
+                            }else{
+                                AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) tbHistorico.getLayoutParams();
+                                params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+                            }
+                            llNoData.setVisibility(View.GONE);
+                            rvHistorico.setVisibility(View.VISIBLE);
                         }
-                        llNoData.setVisibility(View.GONE);
-                        rvHistorico.setVisibility(View.VISIBLE);
-                    }
+                    }catch (Exception e){}
                     rvHistorico.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 }
             });
@@ -293,7 +296,7 @@ public class ActivityHistorico extends AppCompatActivity {
         llOptions = (LinearLayout)findViewById(R.id.llOptions);
         spnOutro = (Spinner)findViewById(R.id.spnOutro);
         txtMensage = (TextView)findViewById(R.id.txtMensage);
-        llNoData = (LinearLayout)findViewById(R.id.llNoData);
+        llNoData = (ScrollView)findViewById(R.id.llNoData);
         txtMensage.setText("Essa turma não tem nenhum registro salvo!");
         llTurma = (LinearLayout)findViewById(R.id.llTurma);
     }

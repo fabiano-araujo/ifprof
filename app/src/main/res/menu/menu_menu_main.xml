@@ -12,6 +12,8 @@
         />
     <item android:id="@+id/itemLerQRCode" android:title="@string/ler_qrcode"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/sobre" android:title="Sobre"
+        android:orderInCategory="100" app:showAsAction="never"/>
     <item android:id="@+id/sairDaConta" android:title="@string/sair_conta"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

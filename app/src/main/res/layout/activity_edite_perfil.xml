@@ -38,10 +38,10 @@
                 >
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ivEditePerfil"
-                    android:layout_width="150dp"
+                    android:layout_width="@dimen/size_icon"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="16dp"
-                    android:layout_height="150dp"
+                    android:layout_height="@dimen/size_icon"
                     android:layout_gravity="center"
                     android:src="@drawable/perfil_toobar"
                     app:civ_border_width="4dp"
@@ -57,7 +57,8 @@
                         android:layout_width="match_parent"
                         android:paddingBottom="13dp"
                         android:paddingTop="13dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:hint="Nome"
                         android:inputType="text" />
                 </android.support.design.widget.TextInputLayout>
@@ -71,7 +72,8 @@
                         android:layout_width="match_parent"
                         android:paddingBottom="13dp"
                         android:paddingTop="13dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:hint="Matrícula"
                         android:inputType="number" />
                 </android.support.design.widget.TextInputLayout>
@@ -84,13 +86,15 @@
                         android:layout_width="match_parent"
                         android:paddingBottom="13dp"
                         android:paddingTop="13dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:hint="Email"
                         android:inputType="textEmailAddress" />
                 </android.support.design.widget.TextInputLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     android:id="@+id/llEditarSenha"
                     android:visibility="gone"
                     android:orientation="vertical">
@@ -147,7 +151,8 @@
                 </LinearLayout>
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/text_size"
                     android:text="Alterar senha"
                     android:id="@+id/btnEditarSenha"
                     android:textColor="@color/colorSecond"
@@ -161,7 +166,8 @@
                     android:layout_height="match_parent">
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:text="Concluir"
                         android:id="@+id/btnConcluirEdite"
                         android:textColor="@color/colorAccent"

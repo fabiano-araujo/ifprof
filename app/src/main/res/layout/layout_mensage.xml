@@ -10,7 +10,7 @@
         android:text="disciplina"
         android:id="@+id/txtDisciplinaAvaliacao"
         android:textColor="@color/colorPrimary"
-        android:textSize="17sp"
+        android:textSize="@dimen/text_size"
         android:layout_marginLeft="16dp"
         android:padding="4dp"
         />

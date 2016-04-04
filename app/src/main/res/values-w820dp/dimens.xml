@@ -8,6 +8,9 @@
     <dimen name="image_apresentation3">300dp</dimen>
     <dimen name="image_apresentation2">300dp</dimen>
     <dimen name="margin_fab">16dp</dimen>
-
+    <dimen name="height_conponentes">60dp</dimen>
+    <dimen name="title_size">45sp</dimen>
+    <dimen name="text_size">35sp</dimen>
+    <dimen name="margin_button">34dp</dimen>
     <dimen name="size_set_photo">450dp</dimen>
 </resources>

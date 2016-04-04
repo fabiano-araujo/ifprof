@@ -37,11 +37,5 @@
     <string name="semAvaliacao">Você não tem nenhuma avaliação!</string>
     <string name="title_activity_apresentation">Apresentation</string>
     <string name="title_activity_alternativas_marcadas">Alternativas Marcadas</string>
-    <string name="turmas_sugeridas">Info2av#
-        fabiano,2012878;
-        maria,287873;
-        cara,98789;
-        ##Adm1av#
-        marcos,233455;
-        tiago,23444;##</string>
+    <string name="turmas_sugeridas">Info2av#fabiano,2012878;maria,287873;cara,98789;##Adm1av#marcos,233455;tiago,23444;##</string>
 </resources>

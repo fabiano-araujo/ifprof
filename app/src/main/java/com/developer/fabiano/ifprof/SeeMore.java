@@ -140,16 +140,16 @@ public class SeeMore extends AppCompatActivity {
             txtNome.setText(aluno.getNomeAluno());
             txtMore.setText(aluno.getMatriculaAluno());
             txtFirstLetter.setText(txtNome.getText().charAt(0) + "");
-            if (allInfo.getDisciplina() != null){
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent it = new Intent(SeeMore.this, VerAluno.class);
-                        it.putExtra("aluno", aluno);
-                        startActivity(it);
-                    }
-                });
-            }
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent it = new Intent(SeeMore.this, VerAluno.class);
+                    it.putExtra("aluno", aluno);
+                    startActivity(it);
+                }
+            });
+
             llSeeMore2.addView(view);
         }
     }

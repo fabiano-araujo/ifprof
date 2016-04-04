@@ -39,7 +39,8 @@
                         android:id="@+id/edtPergunta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="textMultiLine"
+                        android:textSize="@dimen/text_size"
                         android:hint="Pergunta"/>
                 </android.support.design.widget.TextInputLayout>
                 <LinearLayout
@@ -67,8 +68,9 @@
                 </LinearLayout>
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/height_conponentes"
                     android:text="Adicionar imagem"
+                    android:textSize="@dimen/text_size"
                     android:id="@+id/btnAddImage"
                     android:background="@drawable/button_transparent"
                     />
@@ -76,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorSecond"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/title_size"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="16dp"
                     android:text="Alternativas"/>
@@ -87,8 +89,9 @@
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
+                        android:gravity="center_vertical"
                         android:text=" a)"/>
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/iptA"
@@ -101,8 +104,9 @@
                         <EditText
                             android:id="@+id/edtA"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
+                            android:inputType="textMultiLine"
                             android:hint="Alternativa A"/>
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
@@ -112,9 +116,11 @@
                     android:layout_marginTop="9dp"
                     android:orientation="horizontal">
                     <TextView
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
+                        android:gravity="center_vertical"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
+
                         android:text=" b)"/>
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/iptB"
@@ -127,8 +133,9 @@
                         <EditText
                             android:id="@+id/edtB"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
+                            android:inputType="textMultiLine"
                             android:hint="Alternativa B"/>
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
@@ -139,8 +146,9 @@
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
+                        android:gravity="center_vertical"
                         android:text=" c)"/>
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/iptC"
@@ -153,8 +161,9 @@
                         <EditText
                             android:id="@+id/edtC"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
+                            android:inputType="textMultiLine"
                             android:hint="Alternativa C"/>
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
@@ -165,8 +174,9 @@
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
+                        android:gravity="center_vertical"
                         android:text=" d)"/>
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/iptD"
@@ -179,8 +189,9 @@
                         <EditText
                             android:id="@+id/edtD"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
+                            android:inputType="textMultiLine"
                             android:hint="Alternativa D"/>
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
@@ -191,8 +202,9 @@
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
+                        android:gravity="center_vertical"
                         android:text=" e)"/>
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/iptE"
@@ -205,8 +217,9 @@
                         <EditText
                             android:id="@+id/edtE"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
+                            android:inputType="textMultiLine"
                             android:hint="Alternativa E"/>
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
@@ -219,7 +232,8 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
+                        android:textSize="@dimen/text_size"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Disciplina"
                         />
@@ -235,8 +249,8 @@
                 </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
+                    android:layout_height="@dimen/height_conponentes"
+                    android:textSize="@dimen/title_size"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="16dp"
                     android:textColor="@color/colorSecond"
@@ -249,6 +263,7 @@
                     <RadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size"
                         android:layout_weight="1"
                         android:checked="true"
                         android:id="@+id/rbA"
@@ -256,24 +271,28 @@
                     <RadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size"
                         android:id="@+id/rbB"
                         android:layout_weight="1"
                         android:text=" b)"/>
                     <RadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size"
                         android:id="@+id/rbC"
                         android:layout_weight="1"
                         android:text=" c)"/>
                     <RadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size"
                         android:id="@+id/rbD"
                         android:layout_weight="1"
                         android:text=" d)"/>
                     <RadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size"
                         android:id="@+id/rbE"
                         android:layout_weight="1"
                         android:text=" e)"/>
@@ -287,8 +306,9 @@
 
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="@dimen/height_conponentes"
                         android:text="Adicionar"
+                        android:textSize="@dimen/text_size"
                         android:layout_marginTop="30dp"
                         android:id="@+id/btnAddQuestao"
                         android:background="@drawable/pressed_primary"

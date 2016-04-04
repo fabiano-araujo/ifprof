@@ -48,6 +48,7 @@
                             android:text="Cadastre-se!"
                             android:textColor="@color/colorPrimary"
                             android:id="@+id/textView"
+                            android:textSize="@dimen/title_size"
                             android:layout_gravity="center_horizontal"
                             android:layout_centerVertical="true"
                             android:layout_centerHorizontal="true" />
@@ -62,7 +63,8 @@
                             android:layout_width="match_parent"
                             android:paddingBottom="13dp"
                             android:paddingTop="13dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
                             android:hint="Nome"
                             android:inputType="text" />
                     </android.support.design.widget.TextInputLayout>
@@ -75,7 +77,8 @@
                             android:layout_width="match_parent"
                             android:paddingBottom="13dp"
                             android:paddingTop="13dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
                             android:hint="Matrícula"
                             android:inputType="number" />
                     </android.support.design.widget.TextInputLayout>
@@ -89,7 +92,8 @@
                             android:layout_width="match_parent"
                             android:paddingBottom="13dp"
                             android:paddingTop="13dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
                             android:hint="Email"
                             android:inputType="textEmailAddress" />
                     </android.support.design.widget.TextInputLayout>
@@ -107,7 +111,8 @@
                             <EditText
                                 android:id="@+id/edtSenhaCd"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/height_conponentes"
+                                android:textSize="@dimen/text_size"
                                 android:paddingBottom="13dp"
                                 android:paddingTop="13dp"
                                 android:hint="Senha"
@@ -135,7 +140,8 @@
                         android:layout_height="match_parent">
                         <Button
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/height_conponentes"
+                            android:textSize="@dimen/text_size"
                             android:text="cadastrar"
                             android:id="@+id/btnCadastrarCd"
                             android:textColor="@color/colorAccent"

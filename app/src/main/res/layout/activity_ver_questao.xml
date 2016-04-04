@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="pergunta"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/title_size"
                     android:textColor="@color/colorSecond"
                     android:id="@+id/txtVerPergunta"/>
                 <ImageView
@@ -48,7 +48,7 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginLeft="16dp"
                     android:text=" a) a"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size"
                     android:id="@+id/txtAlternativaA"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
                     android:text=" b) b"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size"
                     android:id="@+id/txtAlternativaB"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -64,7 +64,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
                     android:text=" c) c"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size"
                     android:id="@+id/txtAlternativaC"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
                     android:text=" d) d"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size"
                     android:id="@+id/txtAlternativaD"/>
 
                 <TextView
@@ -81,7 +81,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="16dp"
                     android:text=" e) e"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size"
                     android:id="@+id/txtAlternativaE"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -91,14 +91,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/text_size"
                         android:text="Disciplina:"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:text="Disciplina"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/text_size"
                         android:id="@+id/txtDisciplina"/>
                 </LinearLayout>
 
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="Alternativa correta:"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/title_size"
                     android:textColor="@color/colorSecond"
                     android:id="@+id/txtAlternativaCorreta"/>
                 <LinearLayout
@@ -118,8 +118,9 @@
                     android:layout_height="match_parent">
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_conponentes"
                         android:text="Editar"
+                        android:textSize="@dimen/text_size"
                         android:id="@+id/btnEditarQuestao"
                         android:textColor="@color/colorAccent"
                         android:background="@drawable/button_primary"

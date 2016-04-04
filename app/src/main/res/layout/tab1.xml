@@ -52,9 +52,10 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Meu perfil"
                         android:id="@+id/textView2"
+                        android:textSize="@dimen/text_size"
                         android:textColor="@color/colorSecond"
                         android:layout_gravity="center_horizontal"
-                        android:layout_weight="0" />
+                         />
                 </LinearLayout>
                 <LinearLayout
                     android:orientation="vertical"
@@ -78,6 +79,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size"
                         android:textColor="@color/colorSecond"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Questões"
@@ -114,8 +116,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="avaliações"
+                        android:text="Avaliações"
                         android:id="@+id/textView4"
+                        android:textSize="@dimen/text_size"
                         android:layout_gravity="center_horizontal"
                         android:textColor="@color/colorSecond"
                         android:layout_weight="1" />
@@ -145,6 +148,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Disciplinas"
+                        android:textSize="@dimen/text_size"
                         android:id="@+id/textView12"
                         android:textColor="@color/colorSecond"
                         android:layout_gravity="center_horizontal"
